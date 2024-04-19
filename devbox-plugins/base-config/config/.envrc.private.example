@@ -1,0 +1,5 @@
+# For example if your local user on your laptop do not match
+# the users on our infrastructure hosts when connecting with Ansible
+# you can define the remote user here. Remotely we require initials
+# matching our company assigned username and email.
+export ANSIBLE_REMOTE_USER=<initials>

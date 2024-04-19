@@ -19,7 +19,12 @@
       "pip install -r requirements.txt",
       "pre-commit install"
     ],
-     "scripts": {} 
+     "scripts": {
+      "bootstrap-envrc-private": [
+        "cp {{ .DevboxDir }}/config/.envrc.private.example {{ .DevboxDirRoot }}/",
+        "cat {{ .DevboxDir }}/config/envrc-private.direnv >> {{ .DevboxDirRoot }}/.envrc"
+      ]
+     } 
   },
   "include": []
 }

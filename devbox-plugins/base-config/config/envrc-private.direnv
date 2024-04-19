@@ -1,0 +1,12 @@
+echo " 
+Hello from direnv tool - I read your .envrc file!
+I can load environment variables from .envrc file
+See official docs https://direnv.net/
+If direnv is not installed - nothing happens.
+
+Sourcing your private .envrc.private file if exists - ignored in git
+Use it to define your special own envs variables
+Example, see .envrc.private.example file
+" | cowsay -n
+
+source_env_if_exists .envrc.private
