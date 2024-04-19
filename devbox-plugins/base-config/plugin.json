@@ -26,8 +26,8 @@
       "bootstrap-envrc-private": [
         "echo 'Bootstrapping .envrc.private'",
         "echo '{{ .DevboxDirRoot }} {{ .DevboxDir }} {{ .Virtenv }}'",
-        "cp .devbox/virtenv/onlinecity.devops-tools.base-config/.envrc.private.example {{ .DevboxDirRoot }}/",
-        "cat .devbox/virtenv/onlinecity.devops-tools.base-config/envrc-private.direnv >> {{ .DevboxDirRoot }}/.envrc"
+        "cp {{ .Virtenv }}/.envrc.private.example ./",
+        "cat {{ .Virtenv }}/envrc-private.direnv >> ./.envrc"
       ]
      } 
   },
