@@ -1,0 +1,25 @@
+{
+  "name": "Base config",
+  "version": "0.0.1",
+  "description": "Base devbox config for OC DevOps projects",
+  "packages":[
+    "python@3.10",
+    "tfswitch@1.0.0",
+    "pre-commit@3.6.2",
+    "yamllint@1.35.1",
+    "tflint@0.50.3",
+    "cowsay@3.7.0",
+    "go-task@3.35.1"
+  ],
+  "env": {},
+  "create_files": {},
+  "shell": {
+    "init_hook": [
+      ". $VENV_DIR/bin/activate",
+      "pip install -r requirements.txt",
+      "pre-commit install"
+    ],
+     "scripts": {} 
+  },
+  "include": []
+}
