@@ -1,6 +1,6 @@
 {
   "name": "base-config",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
@@ -13,8 +13,8 @@
   ],
   "env": {},
   "create_files": {
-    "{{ .DevboxDir }}/.envrc.private.example": "config/.envrc.private.example",
-    "{{ .DevboxDir }}/envrc-private.direnv": "config/envrc-private.direnv"
+    "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
+    "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv"
   },
   "shell": {
     "init_hook": [
@@ -24,8 +24,8 @@
     ],
      "scripts": {
       "bootstrap-envrc-private": [
-        "cp {{ .DevboxDir }}/.envrc.private.example {{ .DevboxDirRoot }}/",
-        "cat {{ .DevboxDir }}/envrc-private.direnv >> {{ .DevboxDirRoot }}/.envrc"
+        "cp {{ .Virtenv }}/.envrc.private.example {{ .DevboxDirRoot }}/",
+        "cat {{ .Virtenv }}/envrc-private.direnv >> {{ .DevboxDirRoot }}/.envrc"
       ]
      } 
   },
