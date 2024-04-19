@@ -1,6 +1,6 @@
 {
   "name": "Base config",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
@@ -12,7 +12,10 @@
     "go-task@3.35.1"
   ],
   "env": {},
-  "create_files": {},
+  "create_files": {
+    "{{ .DevboxDir }}/.envrc.private.example": "config/.envrc.private.example",
+    "{{ .DevboxDir }}/envrc-private.direnv": "config/envrc-private.direnv"
+  },
   "shell": {
     "init_hook": [
       ". $VENV_DIR/bin/activate",
@@ -21,8 +24,8 @@
     ],
      "scripts": {
       "bootstrap-envrc-private": [
-        "cp {{ .DevboxDir }}/config/.envrc.private.example {{ .DevboxDirRoot }}/",
-        "cat {{ .DevboxDir }}/config/envrc-private.direnv >> {{ .DevboxDirRoot }}/.envrc"
+        "cp {{ .DevboxDir }}/.envrc.private.example {{ .DevboxDirRoot }}/",
+        "cat {{ .DevboxDir }}/envrc-private.direnv >> {{ .DevboxDirRoot }}/.envrc"
       ]
      } 
   },
