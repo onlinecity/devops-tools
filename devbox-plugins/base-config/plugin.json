@@ -1,6 +1,6 @@
 {
   "name": "base-config",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
@@ -26,6 +26,7 @@
       "bootstrap-envrc-private": [
         "echo 'Bootstrapping .envrc.private'",
         "echo '{{ .DevboxDirRoot }} {{ .DevboxDir }} {{ .Virtenv }}'",
+        "pwd",
         "cp {{ .Virtenv }}/.envrc.private.example ./",
         "cat {{ .Virtenv }}/envrc-private.direnv >> ./.envrc"
       ]
