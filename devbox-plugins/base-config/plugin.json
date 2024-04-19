@@ -1,6 +1,6 @@
 {
-  "name": "Base config",
-  "version": "0.0.2",
+  "name": "base-config",
+  "version": "0.0.3",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
