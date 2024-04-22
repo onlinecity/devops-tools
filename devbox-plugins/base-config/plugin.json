@@ -15,7 +15,7 @@
   "create_files": {
     "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
     "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
-    "{{ .Virtenv }}/pre-commit-config.yaml": "config/envrc-private.direnv"
+    "{{ .Virtenv }}/pre-commit-config.yaml": "config/pre-commit-config.yaml"
   },
   "shell": {
     "init_hook": [
