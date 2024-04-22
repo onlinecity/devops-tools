@@ -1,6 +1,6 @@
 {
   "name": "base-config",
-  "version": "0.0.10",
+  "version": "0.0.1",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
@@ -14,21 +14,24 @@
   "env": {},
   "create_files": {
     "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
-    "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv"
+    "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
+    "{{ .Virtenv }}/pre-commit-config.yaml": "config/envrc-private.direnv"
   },
   "shell": {
     "init_hook": [
       ". $VENV_DIR/bin/activate",
-      "pip install -r requirements.txt",
-      "pre-commit install"
+      "[ -f requirements.txt ] && pip install -r requirements.txt",
+      "[ -f .pre-commit-config.yaml ] && pre-commit install"
     ],
      "scripts": {
       "bootstrap-envrc-private": [
         "echo 'Bootstrapping .envrc.private'",
-        "echo '{{ .DevboxDirRoot }} {{ .DevboxDir }} {{ .Virtenv }}'",
-        "pwd",
         "cp {{ .Virtenv }}/.envrc.private.example ./",
         "cat {{ .Virtenv }}/envrc-private.direnv >> ./.envrc"
+      ],
+      "bootstrap-pre-commit": [
+        "echo 'Bootstrapping pre-commit'",
+        "cp {{ .Virtenv }}/.pre-commit-config.yaml .pre-commit-config.yaml"
       ]
      } 
   },
