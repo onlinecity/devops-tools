@@ -26,10 +26,6 @@
      "scripts": {
       "bootstrap-envrc-private": [
         "echo 'Bootstrapping .envrc.private'"
-      ],
-      "bootstrap-pre-commit": [
-        "echo 'Bootstrapping pre-commit'",
-        "cp {{ .Virtenv }}/.pre-commit-config.yaml .pre-commit-config.yaml"
       ]
      } 
   },
