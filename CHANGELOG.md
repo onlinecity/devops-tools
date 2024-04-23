@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/onlinecity/devops-tools/compare/v1.0.0...v1.1.0) (2024-04-23)
+
+
+### Features
+
+* Adding bootstrap scripts ([#2](https://github.com/onlinecity/devops-tools/issues/2)) ([9ee93f5](https://github.com/onlinecity/devops-tools/commit/9ee93f52e4f1f0ec587e58ce034c583f6f980e75))
+
 ## 1.0.0 (2024-04-22)
 
 
