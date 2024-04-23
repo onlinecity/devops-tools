@@ -26,15 +26,6 @@
       "[ -f .pre-commit-config.yaml ] && pre-commit install"
     ],
      "scripts": {
-      "bootstrap-envrc-private": [
-        "echo 'Bootstrapping .envrc.private'",
-        "cp {{ .Virtenv }}/.envrc.private.example ./",
-        "cat {{ .Virtenv }}/envrc-private.direnv >> ./.envrc"
-      ],
-      "bootstrap-pre-commit": [
-        "echo \"Bootstrapping pre-commit\"",
-        "cp {{ .Virtenv }}/.pre-commit-config.yaml .pre-commit-config.yaml"
-      ]
      } 
   },
   "include": []
