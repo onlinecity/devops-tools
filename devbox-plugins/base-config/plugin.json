@@ -1,6 +1,6 @@
 {
   "name": "base-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
@@ -21,17 +21,21 @@
   "shell": {
     "init_hook": [
       "echo \"base-config plugin loaded version `cat {{ .Virtenv }}/version.txt`\"",
-      ". $VENV_DIR/bin/activate"
+      ". $VENV_DIR/bin/activate",
+      "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
+      "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
     ],
      "scripts": {
       "bootstrap-envrc-private": [
         "echo 'Bootstrapping .envrc.private'",
         "cp {{ .Virtenv }}/.envrc.private.example ./",
-        "cat {{ .Virtenv }}/envrc-private.direnv >> ./.envrc"
+        "cat {{ .Virtenv }}/envrc-private.direnv >> ./.envrc",
+        "echo 'Bootstrapping done'"
       ],
       "bootstrap-pre-commit": [
-        "echo \"Bootstrapping pre-commit\"",
-        "cp {{ .Virtenv }}/.pre-commit-config.yaml .pre-commit-config.yaml"
+        "echo 'Bootstrapping pre-commit'",
+        "cp {{ .Virtenv }}/.pre-commit-config.yaml .pre-commit-config.yaml",
+        "echo 'Bootstrapping done'"
       ]
      } 
   },
