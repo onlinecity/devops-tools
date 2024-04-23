@@ -34,7 +34,7 @@
       ],
       "bootstrap-pre-commit": [
         "echo 'Bootstrapping pre-commit'",
-        "cp {{ .Virtenv }}/.pre-commit-config.yaml .pre-commit-config.yaml",
+        "cp {{ .Virtenv }}/pre-commit-config.yaml .pre-commit-config.yaml",
         "echo 'Bootstrapping done'"
       ]
      } 
