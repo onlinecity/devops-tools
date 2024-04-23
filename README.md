@@ -35,12 +35,17 @@ Example `requirement.txt`:
 -r configure/requirements.txt
 ```
 
+#### Terraform
+
+The plugin does not install terraform but instead installs tfswitch to help with getting the correct terraform version. We require our terraform project to define the terraform version with `required_version` and then use tfswitch to install it.
+
 #### Scripts
 
 The base config plugin includes some scripts to help bootstrap a new project.
 
 Available scripts:
   * __bootstrap-envrc-private__ - this command will setup direnv for using a private .envrc file
+  * __bootstrap-pre-commit__ - this command will create a basic pre-commit config with yamllint and tflint
 
 #### TODO (future plans ?)
 
