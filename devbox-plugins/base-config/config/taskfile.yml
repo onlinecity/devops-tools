@@ -1,0 +1,11 @@
+version: '3'
+
+includes:
+  devops-tools: https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml  # ideally this should be the tag of the current version
+
+tasks:
+  usage:
+    cmds:
+      - echo "This taskfile includes some common tasks as defined here:"
+      - echo "    https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml"
+      - echo "Any project specific tasks can be defined in this file"

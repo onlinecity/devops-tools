@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  tf-docs:
+    desc: Generate terraform docs in README.md
+    cmd: terraform-docs markdown table --output-file README.md --output-mode inject ./
+  run-hooks:
+    desc: Run pre-commit hooks on all files
+    cmd: "pre-commit run --all-files"

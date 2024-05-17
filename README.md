@@ -46,6 +46,7 @@ The base config plugin includes some scripts to help bootstrap a new project.
 Available scripts:
   * __bootstrap-envrc-private__ - this command will setup direnv for using a private .envrc file
   * __bootstrap-pre-commit__ - this command will create a basic pre-commit config with yamllint and tflint
+  * __bootstrap-taskfile__ - this command will create a taskfile including common taskfile from the repo
 
 #### TODO (future plans ?)
 

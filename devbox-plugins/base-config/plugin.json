@@ -9,14 +9,18 @@
     "yamllint@1.35.1",
     "tflint@0.50.3",
     "cowsay@3.7.0",
-    "go-task@3.35.1"
+    "go-task@3.35.1",
+    "terraform-docs@0.17.0"
   ],
-  "env": {},
+  "env": {
+    "TASK_X_REMOTE_TASKFILES": "1"
+  },
   "create_files": {
     "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
     "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
     "{{ .Virtenv }}/pre-commit-config.yaml": "config/pre-commit-config.yaml",
-    "{{ .Virtenv }}/version.txt": "../../version.txt"
+    "{{ .Virtenv }}/version.txt": "../../version.txt",
+    "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml"
   },
   "shell": {
     "init_hook": [
@@ -35,6 +39,11 @@
       "bootstrap-pre-commit": [
         "echo 'Bootstrapping pre-commit'",
         "cp {{ .Virtenv }}/pre-commit-config.yaml .pre-commit-config.yaml",
+        "echo 'Bootstrapping done'"
+      ],
+      "bootstrap-taskfile": [
+        "echo 'Bootstrapping taskfile'",
+        "cp {{ .Virtenv }}/taskfile.yml taskfile.yml",
         "echo 'Bootstrapping done'"
       ]
      } 
