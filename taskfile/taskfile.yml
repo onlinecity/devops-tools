@@ -7,3 +7,9 @@ tasks:
   run-hooks:
     desc: Run pre-commit hooks on all files
     cmd: "pre-commit run --all-files"
+  ansible-galaxy:
+    desc: Run ansible galaxy install
+    summary: |
+      Run ansible-galaxy to install required packages
+      Expects a requirements.yaml in the root of the project
+    cmd: ansible-galaxy install -r requirements.yaml

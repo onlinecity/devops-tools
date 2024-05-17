@@ -6,6 +6,6 @@ includes:
 tasks:
   usage:
     cmds:
-      - echo "This taskfile includes some common tasks as defined here
-          https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml
-        Any project specific tasks can be defined in this file"
+      - echo -e " This taskfile includes some common tasks as defined here:\n\n
+                https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml\n\n
+                Any project specific tasks can be defined in this file " | cowsay -n
