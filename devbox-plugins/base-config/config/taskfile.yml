@@ -9,3 +9,4 @@ tasks:
       - echo "This taskfile includes some common tasks as defined here:"
       - echo "    https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml"
       - echo "Any project specific tasks can be defined in this file"
+    silent: true
