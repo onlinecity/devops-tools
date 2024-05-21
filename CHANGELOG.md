@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/onlinecity/devops-tools/compare/v1.1.0...v1.2.0) (2024-05-21)
+
+
+### Features
+
+* Add release-please bootstrapping ([1298e24](https://github.com/onlinecity/devops-tools/commit/1298e24ab2e3b895e42953b8efddb97afeee5ad8))
+* Add taskfile setup ([#4](https://github.com/onlinecity/devops-tools/issues/4)) ([3cf6b16](https://github.com/onlinecity/devops-tools/commit/3cf6b1662f333737bd52ae438216d272c73c96b8))
+
+
+### Bug Fixes
+
+* Missing file ([0336a22](https://github.com/onlinecity/devops-tools/commit/0336a225efa32889fb7e78f1955709a1854d473a))
+
 ## [1.1.0](https://github.com/onlinecity/devops-tools/compare/v1.0.0...v1.1.0) (2024-04-23)
 
 
