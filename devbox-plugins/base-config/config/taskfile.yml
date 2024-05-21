@@ -1,7 +1,7 @@
 version: '3'
 
 includes:
-  devops-tools: https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml  # ideally this should be the tag of the current version
+  devops-tools: https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml  # ideally this should be a specific tag instead of master
 
 tasks:
   usage:
