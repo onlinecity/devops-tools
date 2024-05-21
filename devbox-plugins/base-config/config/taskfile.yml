@@ -1,0 +1,11 @@
+version: '3'
+
+includes:
+  devops-tools: https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml  # ideally this should be a specific tag instead of master
+
+tasks:
+  usage:
+    cmds:
+      - echo -e " This taskfile includes some common tasks as defined here:\n\n
+                https://raw.githubusercontent.com/onlinecity/devops-tools/master/taskfile/taskfile.yml\n\n
+                Any project specific tasks can be defined in this file " | cowsay -n
