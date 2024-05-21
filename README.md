@@ -22,7 +22,7 @@ This plugin has the baseline of tools needed for a DevOps project.
 This includes:
   * Python, including a virtual environment
   * Pre-commit and linting hooks
-  * tfswitch and tflint for working with terraform
+  * tfswitch, tflint and terraform-docs for working with terraform
   * Taskfile
 
 #### Python and pip
