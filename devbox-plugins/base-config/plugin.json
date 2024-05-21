@@ -51,6 +51,7 @@
         "echo 'Bootstrapping release-please'",
         "mkdir -p .github/workflows",
         "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
+        "echo \".task/\" >> .gitignore",
         "echo 'Bootstrapping done'"
       ]
      } 
