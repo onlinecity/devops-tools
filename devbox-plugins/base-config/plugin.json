@@ -45,6 +45,12 @@
         "echo 'Bootstrapping taskfile'",
         "cp {{ .Virtenv }}/taskfile.yml taskfile.yml",
         "echo 'Bootstrapping done'"
+      ],
+      "bootstrap-release-please": [
+        "echo 'Bootstrapping release-please'",
+        "mkdir -p .github/workflows",
+        "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
+        "echo 'Bootstrapping done'"
       ]
      } 
   },
