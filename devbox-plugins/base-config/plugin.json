@@ -20,7 +20,8 @@
     "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
     "{{ .Virtenv }}/pre-commit-config.yaml": "config/pre-commit-config.yaml",
     "{{ .Virtenv }}/version.txt": "../../version.txt",
-    "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml"
+    "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
+    "{{ .Virtenv }}/release-please.yml": "config/release-please.yml"
   },
   "shell": {
     "init_hook": [
