@@ -1,6 +1,6 @@
 {
   "name": "base-config",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
@@ -19,7 +19,7 @@
     "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
     "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
     "{{ .Virtenv }}/pre-commit-config.yaml": "config/pre-commit-config.yaml",
-    "{{ .Virtenv }}/version.txt": "../../version.txt",
+    "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml"
   },
@@ -40,6 +40,7 @@
       "bootstrap-pre-commit": [
         "echo 'Bootstrapping pre-commit'",
         "cp {{ .Virtenv }}/pre-commit-config.yaml .pre-commit-config.yaml",
+        "cp {{ .Virtenv }}/.yamlint .yamlint",
         "echo 'Bootstrapping done'"
       ],
       "bootstrap-taskfile": [
