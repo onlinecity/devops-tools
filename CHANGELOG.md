@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.2](https://github.com/onlinecity/devops-tools/compare/v1.2.1...v1.2.2) (2024-05-23)
+
+
+### Bug Fixes
+
+* Changed task ansible-galaxy to run in current dir ([ce82171](https://github.com/onlinecity/devops-tools/commit/ce8217163444738742336326ea1c074dd76b9663))
+* Fixed bug ([7c7991b](https://github.com/onlinecity/devops-tools/commit/7c7991b05d6e4525807d59cd07fb96a77f276e00))
+
 ## [1.2.1](https://github.com/onlinecity/devops-tools/compare/v1.2.0...v1.2.1) (2024-05-21)
 
 
