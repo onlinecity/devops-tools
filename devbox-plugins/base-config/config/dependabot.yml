@@ -1,0 +1,7 @@
+# FIXME - reference to source of this file?
+version: 2
+updates:
+- package-ecosystem: "gitsubmodule"
+  directory: "/"
+  schedule:
+    interval: "daily"

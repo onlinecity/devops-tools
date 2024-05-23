@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/main/.schema/devbox-plugin.schema.json",
   "name": "base-config",
   "version": "1.2.1",
   "description": "Base devbox config for OC DevOps projects",
@@ -21,7 +22,8 @@
     "{{ .Virtenv }}/pre-commit-config.yaml": "config/pre-commit-config.yaml",
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
-    "{{ .Virtenv }}/release-please.yml": "config/release-please.yml"
+    "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
+    "{{ .Virtenv }}/dependabot.yml": "config/dependabot.yml"
   },
   "shell": {
     "init_hook": [
@@ -53,8 +55,17 @@
         "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
         "echo \".task/\" >> .gitignore",
         "echo 'Bootstrapping done'"
+      ],
+      // FIXME Better end echo comamnd explaining more?
+      // FIXME - consider if these should be called configure, because they can also be used to update later?
+      "bootstrap-dependabot": [
+        "echo 'Bootstrapping Github dependabot automation'",
+        "mkdir -p .github/workflows",
+        "cp {{ .Virtenv }}/dependabot.yml .github/workflows/dependabot.yml",
+        "echo \".task/\" >> .gitignore",
+        "echo 'Created dependabot Github workflow. Please commit and push to enable dependabot automation.'"
       ]
-     } 
+     }
   },
   "include": []
 }
