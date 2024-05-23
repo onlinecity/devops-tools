@@ -1,0 +1,19 @@
+[defaults]
+
+# devbox plugin special: the below Ansible Jinja, requires Go Template escaping, because devbox runs everything through Go templating.
+# Can't give example, because it would need to be escaped... see instead: https://stackoverflow.com/a/17642427
+# devbox plugin code: https://github.com/jetify-com/devbox/blob/0.10.7/internal/plugin/plugin.go#L126
+
+# Ensure we can add the '{{"{{"}} ansible_managed {{"}}"}}' Jinja variable to templated files, to give a hint of traceability on where files comes from on the hosts.
+ansible_managed = Ansible managed file. From {{"{{%"}} if role_name is defined {{"%}}"}}role: '{{"{{{{"}} role_name {{"}}}}"}}'{{"{{%"}} else {{"%}}"}}playbook described with 'name: {{"{{{{"}} ansible_play_name {{"}}}}"}}' {{"{{%"}} endif {{"%}}"}}. Template source file name: {{"{{{{"}} template_path | basename {{"}}}}"}}
+
+
+# Installs roles into [current dir]/roles/namespace.rolename
+roles_path= ./roles
+
+
+# Installs collections into [current dir]/ansible_collections/namespace/collection_name
+collections_paths = ./
+
+[diff]
+always = true

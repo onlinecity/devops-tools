@@ -1,3 +1,6 @@
+# This files was added by a devbox script from our devops tools project and is maintained there:
+# https://github.com/onlinecity/devops-tools
+
 # For example if your local user on your laptop do not match
 # the users on our infrastructure hosts when connecting with Ansible
 # you can define the remote user here. Remotely we require initials

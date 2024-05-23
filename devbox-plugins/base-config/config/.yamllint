@@ -1,4 +1,7 @@
 ---
+# This files was added by a devbox script from our devops tools project and is maintained there:
+# https://github.com/onlinecity/devops-tools
+
 extends: default
 
 rules:

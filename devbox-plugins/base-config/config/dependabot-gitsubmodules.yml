@@ -1,0 +1,8 @@
+# This files was added by a devbox script from our devops tools project:
+# https://github.com/onlinecity/devops-tools
+version: 2
+updates:
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "daily"
