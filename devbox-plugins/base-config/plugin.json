@@ -25,7 +25,6 @@
   },
   "shell": {
     "init_hook": [
-      "echo \"base-config plugin loaded version `cat {{ .Virtenv }}/version.txt`\"",
       ". $VENV_DIR/bin/activate",
       "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
       "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
@@ -40,7 +39,7 @@
       "bootstrap-pre-commit": [
         "echo 'Bootstrapping pre-commit'",
         "cp {{ .Virtenv }}/pre-commit-config.yaml .pre-commit-config.yaml",
-        "cp {{ .Virtenv }}/.yamlint .yamlint",
+        "cp {{ .Virtenv }}/.yamllint .yamllint",
         "echo 'Bootstrapping done'"
       ],
       "bootstrap-taskfile": [
