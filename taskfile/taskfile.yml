@@ -13,3 +13,4 @@ tasks:
       Run ansible-galaxy to install required packages
       Expects a requirements.yaml in the root of the project
     cmd: ansible-galaxy install -r requirements.yaml
+    dir: '{{.USER_WORKING_DIR}}'
