@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/onlinecity/devops-tools/compare/v1.2.0...v1.2.1) (2024-05-21)
+
+
+### Bug Fixes
+
+* Adding yamlint config file ([5de69fb](https://github.com/onlinecity/devops-tools/commit/5de69fba900511e3219247e70de5f00f1c288caa))
+
 ## [1.2.0](https://github.com/onlinecity/devops-tools/compare/v1.1.0...v1.2.0) (2024-05-21)
 
 
