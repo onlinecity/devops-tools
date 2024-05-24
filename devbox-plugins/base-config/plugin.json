@@ -67,7 +67,6 @@
         "echo \".task/\" >> .gitignore",
         "echo 'Created dependabot Github workflow. Please commit and push to enable dependabot automation.'"
       ]
-     },
      "bootstrap-ansible": [
       "echo 'Bootstrapping Ansible project'",
       "mkdir -p configure/",
