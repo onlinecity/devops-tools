@@ -10,6 +10,7 @@
     "yamllint@1.35.1",
     "tflint@0.50.3",
     "cowsay@3.7.0",
+    // go-task, is taskfile https://taskfile.dev/
     "go-task@3.35.1",
     "terraform-docs@0.17.0"
   ],
@@ -23,7 +24,8 @@
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
-    "{{ .Virtenv }}/dependabot.yml": "config/dependabot.yml"
+    "{{ .Virtenv }}/dependabot.yml": "config/dependabot.yml",
+    "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg"
   },
   "shell": {
     "init_hook": [
@@ -65,7 +67,15 @@
         "echo \".task/\" >> .gitignore",
         "echo 'Created dependabot Github workflow. Please commit and push to enable dependabot automation.'"
       ]
-     }
+     },
+     "bootstrap-ansible": [
+      "echo 'Bootstrapping Ansible project'",
+      "mkdir -p configure/",
+      "cp {{ .Virtenv }}/ansible.cfg configure/ansible.cfg",
+      "echo \".task/\" >> .gitignore",
+      "echo 'Created our standard Ansible configuration file.. Please commit and push to enable dependabot automation.'"
+    ]
+   }
   },
   "include": []
 }
