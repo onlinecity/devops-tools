@@ -67,11 +67,11 @@
         "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
         "echo 'Bootstrapping done'"
       ],
-      "bootstrap-dependabot": [
-        "echo 'Bootstrapping Github dependabot automation'",
+      "bootstrap-dependabot-gitsubmodules": [
+        "echo 'Bootstrapping Github dependabot automation for Git submodules'",
         "mkdir -p .github/workflows",
-        "cp {{ .Virtenv }}/dependabot.yml .github/workflows/dependabot.yml",
-        "echo 'Created dependabot Github workflow. Please commit and push to enable dependabot automation.'"
+        "cp {{ .Virtenv }}/dependabot-gitsubmodules.yml .github/workflows/dependabot-gitsubmodules.yml",
+        "echo 'Created dependabot Github workflow for Git submodules. Please commit and push to enable dependabot automation.'"
       ],
      "bootstrap-ansible": [
       "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
