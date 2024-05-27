@@ -12,7 +12,7 @@
     "cowsay@3.7.0",
     // go-task, is taskfile https://taskfile.dev/
     "go-task@3.35.1",
-    "terraform-docs@0.17.0".
+    "terraform-docs@0.17.0",
     // for merging ini, ssh and lines, see https://github.com/pixelb/crudini
     // added to merge ansible.cfg files
     "crudini@0.9.5"
