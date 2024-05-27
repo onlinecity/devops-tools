@@ -1,7 +1,5 @@
 [defaults]
 
-# Ensure we can add the `ansible_managed` Jinja variable to templated files, to give a hint of traceability on where files comes from on the hosts.
-ansible_managed = Ansible managed file. From {{% if role_name is defined %}}role: '{{{{ role_name }}}}'{{% else %}}playbook described with 'name: {{{{ ansible_play_name }}}}' {{% endif %}}. Template source file name: {{{{ template_path | basename }}}}
 
 
 # Installs roles into [current dir]/roles/namespace.rolename
