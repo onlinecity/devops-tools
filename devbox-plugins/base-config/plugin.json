@@ -30,7 +30,7 @@
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
-    "{{ .Virtenv }}/dependabot.yml": "config/dependabot-gitsubmodules.yml",
+    "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
     "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist"
   },
@@ -76,9 +76,15 @@
      "bootstrap-ansible": [
       "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
       "mkdir -p configure/",
+      "if ! [ -f configure/ansible.cfg ];then echo 'Creating empty ansible.cfg file if not exists.'; fi",
       "if ! [ -f configure/ansible.cfg ];then cp -v {{ .Virtenv }}/ansible.cfg configure/ansible.cfg; fi",
+      "echo 'Merging ansible.cfg.dist into ansible.cfg.'",
       "crudini --output=configure/ansible.cfg --merge {{ .Virtenv }}/ansible.cfg < {{ .Virtenv }}/ansible.cfg.dist",
+      "if [ -f configure/ansible.cfg.local ];then echo 'Merging ansible.cfg.local into ansible.cfg.'; fi",
       "if [ -f configure/ansible.cfg.local ];then crudini --output=configure/ansible.cfg --merge configure/ansible.cfg < configure/ansible.cfg.local; fi",
+      "echo 'Validating ansible.cfg file.'",
+      // simple verification of syntax errors, it will not catch sections or keys not know to ansible
+      "ansible-config dump --only-changed -c configure/ansible.cfg --format yaml > /dev/null || echo 'Error in ansible.cfg, please check the file.'",
       "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
     ]
    }
