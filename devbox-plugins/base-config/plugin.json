@@ -22,6 +22,7 @@
     // While the feature is an experiment we expect it to be included at some point that is seems like a necessary feature.
     "TASK_X_REMOTE_TASKFILES": "1"
   },
+  // Remember to declare all files in this section, if you want to process them shell or scripts below.
   "create_files": {
     "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
     "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
@@ -30,7 +31,8 @@
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
     "{{ .Virtenv }}/dependabot.yml": "config/dependabot.yml",
-    "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg"
+    "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
+    "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist"
   },
   "shell": {
     "init_hook": [
