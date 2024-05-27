@@ -1,0 +1,11 @@
+[defaults]
+
+# Installs roles into [current dir]/roles/namespace.rolename
+roles_path= ./roles
+
+
+# Installs collections into [current dir]/ansible_collections/namespace/collection_name
+collections_paths = ./
+
+[diff]
+always = true
