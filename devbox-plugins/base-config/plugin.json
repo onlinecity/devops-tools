@@ -77,8 +77,6 @@
      "bootstrap-ansible": [
       "echo 'Bootstrapping Ansible project'",
       "mkdir -p configure/",
-      "cp {{ .Virtenv }}/ansible.cfg.dist configure/ansible.cfg.dist",
-      "cp {{ .Virtenv }}/ansible.cfg.initial configure/ansible.cfg.initial",
       "crudini --output=ansible.cfg --merge {{ .Virtenv }}/ansible.cfg < {{ .Virtenv }}/ansible.cfg.dist",
       "crudini --output=ansible.cfg --merge ansible.cfg < ansible.cfg.local",
       "echo \".task/\" >> .gitignore",
