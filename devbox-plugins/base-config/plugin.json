@@ -76,9 +76,9 @@
      "bootstrap-ansible": [
       "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
       "mkdir -p configure/",
-      "if ! [ -f configure/ansible.cfg ]; then cp -v {{ .Virtenv }}/ansible.cfg configure/ansible.cfg; fi",
+      "if ! [ -f configure/ansible.cfg ];then cp -v {{ .Virtenv }}/ansible.cfg configure/ansible.cfg; fi",
       "crudini --output=configure/ansible.cfg --merge {{ .Virtenv }}/ansible.cfg < {{ .Virtenv }}/ansible.cfg.dist",
-      "crudini --output=configure/ansible.cfg --merge configure/ansible.cfg < configure/ansible.cfg.local",
+      "if [ -f configure/ansible.cfg.local ];then crudini --output=configure/ansible.cfg --merge configure/ansible.cfg < configure/ansible.cfg.local; fi",
       "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
     ]
    }
