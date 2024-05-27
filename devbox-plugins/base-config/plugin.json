@@ -30,7 +30,7 @@
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
-    "{{ .Virtenv }}/dependabot.yml": "config/dependabot.yml",
+    "{{ .Virtenv }}/dependabot.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
     "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist"
   },
