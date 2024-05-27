@@ -67,8 +67,6 @@
         "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
         "echo 'Bootstrapping done'"
       ],
-      // FIXME Better end echo comamnd explaining more?
-      // FIXME - consider if these should be called configure, because they can also be used to update later?
       "bootstrap-dependabot": [
         "echo 'Bootstrapping Github dependabot automation'",
         "mkdir -p .github/workflows",
@@ -76,7 +74,7 @@
         "echo 'Created dependabot Github workflow. Please commit and push to enable dependabot automation.'"
       ],
      "bootstrap-ansible": [
-      "echo 'Bootstrapping Ansible project'",
+      "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
       "mkdir -p configure/",
       "if ! [ -f configure/ansible.cfg ]; then cp -v {{ .Virtenv }}/ansible.cfg configure/ansible.cfg; fi",
       "crudini --output=configure/ansible.cfg --merge {{ .Virtenv }}/ansible.cfg < {{ .Virtenv }}/ansible.cfg.dist",
