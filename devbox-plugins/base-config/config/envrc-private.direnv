@@ -1,4 +1,6 @@
-echo " 
+# This files was added by a devbox script from our devops tools project:
+# https://github.com/onlinecity/devops-tools
+echo "
 Hello from direnv tool - I read your .envrc file!
 I can load environment variables from .envrc file
 See official docs https://direnv.net/

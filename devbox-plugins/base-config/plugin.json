@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/main/.schema/devbox-plugin.schema.json",
   "name": "base-config",
   "version": "1.2.1",
   "description": "Base devbox config for OC DevOps projects",
@@ -9,19 +10,29 @@
     "yamllint@1.35.1",
     "tflint@0.50.3",
     "cowsay@3.7.0",
+    // go-task, is taskfile https://taskfile.dev/
     "go-task@3.35.1",
-    "terraform-docs@0.17.0"
+    "terraform-docs@0.17.0",
+    // for merging ini, ssh and lines, see https://github.com/pixelb/crudini
+    // added to merge ansible.cfg files
+    "crudini@0.9.5"
   ],
   "env": {
+    // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment variable TASK_X_REMOTE_TASKFILES. More information about remote taskfiles and experiments can be found in https://taskfile.dev/experiments/remote-taskfiles/. Status of the experiment can be found in depth https://github.com/orgs/go-task/projects/1?pane=issue&itemId=37121354
+    // While the feature is an experiment we expect it to be included at some point that is seems like a necessary feature.
     "TASK_X_REMOTE_TASKFILES": "1"
   },
+  // Remember to declare all files in this section, if you want to process them shell or scripts below.
   "create_files": {
     "{{ .Virtenv }}/.envrc.private.example": "config/.envrc.private.example",
     "{{ .Virtenv }}/envrc-private.direnv": "config/envrc-private.direnv",
     "{{ .Virtenv }}/pre-commit-config.yaml": "config/pre-commit-config.yaml",
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
-    "{{ .Virtenv }}/release-please.yml": "config/release-please.yml"
+    "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
+    "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
+    "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
+    "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist"
   },
   "shell": {
     "init_hook": [
@@ -29,7 +40,7 @@
       "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
       "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
     ],
-     "scripts": {
+    "scripts": {
       "bootstrap-envrc-private": [
         "echo 'Bootstrapping .envrc.private'",
         "cp {{ .Virtenv }}/.envrc.private.example ./",
@@ -45,16 +56,38 @@
       "bootstrap-taskfile": [
         "echo 'Bootstrapping taskfile'",
         "cp {{ .Virtenv }}/taskfile.yml taskfile.yml",
+        // try to make adding to .gitignore idempotent
+        // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".task/" and returns true if found
+        "if crudini --get .gitignore \"\" \".task/\";then true; else echo -e '\n\n# Ignore file taskfile tool like remote tasks files etc.\n.task/' >> .gitignore; fi",
         "echo 'Bootstrapping done'"
       ],
       "bootstrap-release-please": [
         "echo 'Bootstrapping release-please'",
         "mkdir -p .github/workflows",
         "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
-        "echo \".task/\" >> .gitignore",
         "echo 'Bootstrapping done'"
+      ],
+      "bootstrap-dependabot-gitsubmodules": [
+        "echo 'Bootstrapping Github dependabot automation for Git submodules'",
+        "mkdir -p .github/workflows",
+        "cp {{ .Virtenv }}/dependabot-gitsubmodules.yml .github/dependabot-gitsubmodules.yml",
+        "echo 'Created dependabot Github workflow for Git submodules. Please commit and push to enable dependabot automation.'"
+      ],
+      "bootstrap-ansible": [
+        "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
+        "mkdir -p configure/",
+        "if ! [ -f configure/ansible.cfg ];then echo 'Creating empty ansible.cfg file if not exists.'; fi",
+        "if ! [ -f configure/ansible.cfg ];then cp -v {{ .Virtenv }}/ansible.cfg configure/ansible.cfg; fi",
+        "echo 'Merging ansible.cfg.dist into ansible.cfg.'",
+        "crudini --output=configure/ansible.cfg --merge {{ .Virtenv }}/ansible.cfg < {{ .Virtenv }}/ansible.cfg.dist",
+        "if [ -f configure/ansible.cfg.local ];then echo 'Merging ansible.cfg.local into ansible.cfg.'; fi",
+        "if [ -f configure/ansible.cfg.local ];then crudini --output=configure/ansible.cfg --merge configure/ansible.cfg < configure/ansible.cfg.local; fi",
+        "echo 'Validating ansible.cfg file.'",
+        // simple verification of syntax errors, it will not catch sections or keys not know to ansible
+        "ansible-config dump --only-changed -c configure/ansible.cfg --format yaml > /dev/null || echo 'Error in ansible.cfg, please check the file.'",
+        "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
       ]
-     } 
+    }
   },
   "include": []
 }
