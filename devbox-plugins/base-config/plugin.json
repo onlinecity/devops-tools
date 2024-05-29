@@ -17,7 +17,7 @@
     // for merging ini, ssh and lines, see https://github.com/pixelb/crudini
     // added to merge ansible.cfg files
     "crudini@0.9.5",
-    "yq@3.4.3"
+    "yq-go@4.44.1"
   ],
   "env": {
     // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment 
@@ -95,7 +95,8 @@
       ],
       "bootstrap-terraform-docs": [
         "echo 'Add terraform-docs pre-commit hooks'",
-        "yq -n 'load(\".pre-commit-config.yaml\" *+ load(\"{{ .Virtenv }}/pre-commit-config-tfdocs.yaml\")' > .pre-commit-config.yaml",
+        "yq -n 'load(\".pre-commit-config.yaml\") *+ load(\"{{ .Virtenv }}/pre-commit-config-tfdocs.yaml\")' > .pre-commit-config.yaml.tmp",
+        "mv .pre-commit-config.yaml.tmp .pre-commit-config.yaml",
         "echo 'Done'"
       ]
     }
