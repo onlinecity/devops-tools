@@ -14,3 +14,17 @@ tasks:
       Expects a requirements.yaml in the root of the project
     cmd: ansible-galaxy install -r requirements.yaml
     dir: '{{.USER_WORKING_DIR}}'
+  install-tofu:
+    desc: Install tofu version as defined in required_version
+    summary: |
+      Uses tenv to install the latest allowed version of tofu
+      Needs to be run from tofu project directory and expects the project to have required_version set
+    cmd: tenv tofu install latest-allowed
+    dir: '{{.USER_WORKING_DIR}}'
+  install-terraform:
+    desc: Install terraform version as defined in required_version
+    summary: |
+      Uses tenv to install the latest allowed version of terraform
+      Needs to be run from terraform project directory and expects the project to have required_version set
+    cmd: tenv terraform install latest-allowed
+    dir: '{{.USER_WORKING_DIR}}'

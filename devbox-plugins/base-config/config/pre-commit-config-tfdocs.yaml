@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/terraform-docs/terraform-docs
+    rev: 795d369fdcfbadef3cfca311be03135f794998c5 # v0.17.0
+    hooks:
+      - id: terraform-docs-go
+        args: ["markdown", "table", "--output-file", "README.md", "--output-mode", "inject", "./"]
