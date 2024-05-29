@@ -95,7 +95,7 @@
       ],
       "bootstrap-terraform-docs": [
         "echo 'Add terraform-docs pre-commit hooks'",
-        "yq -n 'load(\".pre-commit-config.yaml\" *+ load(\"{{ .Virtenv }}/pre-commit-config-tfdocs.yaml\") > .pre-commit-config.yaml",
+        "yq -n 'load(\".pre-commit-config.yaml\" *+ load(\"{{ .Virtenv }}/pre-commit-config-tfdocs.yaml\")' > .pre-commit-config.yaml",
         "echo 'Done'"
       ]
     }
