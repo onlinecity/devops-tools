@@ -20,7 +20,17 @@
   "env": {
     // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment variable TASK_X_REMOTE_TASKFILES. More information about remote taskfiles and experiments can be found in https://taskfile.dev/experiments/remote-taskfiles/. Status of the experiment can be found in depth https://github.com/orgs/go-task/projects/1?pane=issue&itemId=37121354
     // While the feature is an experiment we expect it to be included at some point that is seems like a necessary feature.
-    "TASK_X_REMOTE_TASKFILES": "1"
+    "TASK_X_REMOTE_TASKFILES": "1",
+
+    // Change default location of virtual environment from devbox default VENV_DIR=.devbox/virtenv/python/.venv to `.venv`
+    // so we do not implicitly have other tools depend on devbox internal locations.
+    //
+    // Using `.venv` is more community like and standard for other tools to find.
+    // https://docs.python.org/3/tutorial/venv.html](https://docs.python.org/3/tutorial/venv.html writes:
+    // > A common directory location for a virtual environment is .venv. This name keeps the directory typically hidden in your shell
+    // > and thus out of the way while giving it a name that explains why the directory exists.
+    // It also prevents clashing with .env environment variable definition files that some tooling supports.
+    "VENV_DIR": ".venv"
   },
   // Remember to declare all files in this section, if you want to process them shell or scripts below.
   "create_files": {
@@ -36,7 +46,13 @@
   },
   "shell": {
     "init_hook": [
+      // Works for bash and zsh
       ". $VENV_DIR/bin/activate",
+
+      // try to make adding to .gitignore idempotent
+      // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".venv" and returns true if found
+      "if crudini --get .gitignore \"\" \".venv\";then true; else echo -e '\n\n# Python virtual environment for tooling and Ansible\n.venv' >> .gitignore; fi",
+
       "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
       "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
     ],

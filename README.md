@@ -31,14 +31,19 @@ Example:
 This plugin has the baseline of tools needed for a DevOps project.
 
 This includes:
-  * Python, including a virtual environment
-  * Pre-commit and linting hooks
-  * tfswitch, tflint and terraform-docs for working with terraform
-  * Taskfile
+
+* Python, including a virtual environment
+* Pre-commit and linting hooks
+* tfswitch, tflint and terraform-docs for working with terraform
+* Taskfile
+
+Assumptions:
+
+* You use either Bash or Zsh as your shell.
 
 #### Python and pip
 
-The plugin creates a python virtual envrionment, activates it and installs pip requirements. Note that it expects a `requirements.txt` in the root of the project for pip installation to work. If your requirements file is located elsewhere, you can create a "root" requirements.txt with a link to your other requirements file.
+The plugin creates a python virtual environment, activates it and installs pip requirements. Note that it expects a `requirements.txt` in the root of the project for pip installation to work. If your requirements file is located elsewhere, you can create a "root" requirements.txt with a link to your other requirements file.
 
 Example `requirement.txt`:
 
