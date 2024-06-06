@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/main/.schema/devbox-plugin.schema.json",
   "name": "base-config",
-  "version": "1.2.3",
+  "version": "1.4.0",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
     "python@3.10",
