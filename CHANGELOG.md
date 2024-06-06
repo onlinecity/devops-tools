@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/onlinecity/devops-tools/compare/v1.3.0...v1.4.0) (2024-06-06)
+
+
+### Features
+
+* Only use py virt env if requirements file exists ([#14](https://github.com/onlinecity/devops-tools/issues/14)) ([51bfe53](https://github.com/onlinecity/devops-tools/commit/51bfe53e620a875ac6bb673ef6292a918193a5ba))
+* Tofu support ([#12](https://github.com/onlinecity/devops-tools/issues/12)) ([50f0e5f](https://github.com/onlinecity/devops-tools/commit/50f0e5feee1575610ced7fda0513e276db42515a))
+
+
+### Bug Fixes
+
+* Move Python virt. env to standard non devbox path ([#11](https://github.com/onlinecity/devops-tools/issues/11)) ([8666be6](https://github.com/onlinecity/devops-tools/commit/8666be6e0e109276e76732a56fce20cf1116c49f))
+
 ## [1.3.0](https://github.com/onlinecity/devops-tools/compare/v1.2.2...v1.3.0) (2024-05-29)
 
 
