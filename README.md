@@ -34,7 +34,7 @@ This includes:
 
 * Python, including a virtual environment if `requirements.txt` is present in the root of the repository
 * Pre-commit and linting hooks
-* tfswitch, tflint and terraform-docs for working with terraform
+* tenv, tflint and terraform-docs for working with terraform or tofu
 * Taskfile
 
 Assumptions:
