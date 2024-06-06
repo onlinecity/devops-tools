@@ -1,12 +1,16 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
+
 
 tasks:
   tf-docs:
     desc: Generate terraform docs in README.md
     cmd: terraform-docs markdown table --output-file README.md --output-mode inject ./
+
   run-hooks:
     desc: Run pre-commit hooks on all files
     cmd: "pre-commit run --all-files"
+
   ansible-galaxy:
     desc: Run ansible galaxy install
     summary: |
@@ -14,6 +18,7 @@ tasks:
       Expects a requirements.yaml in the root of the project
     cmd: ansible-galaxy install -r requirements.yaml
     dir: '{{.USER_WORKING_DIR}}'
+
   install-tofu:
     desc: Install tofu version as defined in required_version
     summary: |
@@ -21,10 +26,70 @@ tasks:
       Needs to be run from tofu project directory and expects the project to have required_version set
     cmd: tenv tofu install latest-allowed
     dir: '{{.USER_WORKING_DIR}}'
+
   install-terraform:
     desc: Install terraform version as defined in required_version
     summary: |
       Uses tenv to install the latest allowed version of terraform
       Needs to be run from terraform project directory and expects the project to have required_version set
     cmd: tenv terraform install latest-allowed
+    dir: '{{.USER_WORKING_DIR}}'
+
+  ssh-write-config-files:
+    desc: Write SSH connection configuration files for project hosts
+    summary: |
+      Get Terraform output and pass it to a Python script that writes ssh connection configuration- and
+      known hosts files for all projects hosts.
+
+      Opt-in to use the written configuration file in your local ssh client adding
+      to your personal configuration file ~/.ssh/config file something like:
+      'Include ~/<your git repository configuration>-<common infrastructure repository name>/provision/*/.ssh/config.d/*'
+
+      Alternatively you can write them to the ~/.ssh/config.d/ directory, and include with:
+      'Include config.d/*'
+
+      Prerequisites:
+        - current directory is in a terraform project
+        - terraform project have outputs, according to our internal devops docs about automated ssh connection configuration for hosts
+
+      Arguments:
+        - CLEAN_UP={{.CLEAN_UP}}
+
+          [true|false]
+          Leave temporary Terraform output file in json format on disk.
+
+
+        - SSH_CONFIG_FILES_DIR={{.SSH_CONFIG_FILES_DIR}}
+        - SSH_KNOWN_HOSTS_FILES_DIR={{.SSH_KNOWN_HOSTS_FILES_DIR}}
+
+          [full- or absolute path] - will be created
+          Directories to write ssh configuration files, absolute or relative to current directory.
+          Variables honors environment variables, so if you always want the files another place,
+          you can use the envrc.private file feature add/edit your personal environment
+          in a project that uses our devops-tooling.
+    requires:
+      vars:
+        # Defined by devbox configuration pointing to distribution path in devbox plugin of our Python script
+        - SSH_HOST_CONNECTION_CONFIGURATION_WRITE_FILES_SCRIPT
+    # preflight checks giving the user with a helpful message
+    preconditions:
+      # terraform output doesn't fail if not in a terraform project, so we needed another fast executing terraform cmd that would:
+      - sh: terraform providers
+        msg: "Seems like you're not in a terraform project?"
+    vars:
+      TF_OUTPUT_FILENAME: output-createdby-taskfile-task-{{.TASK}}.json
+      CLEAN_UP: '{{.CLEAN_UP | default true}}'
+      # The output directory for the ssh host connection configuration files
+      SSH_CONFIG_FILES_DIR: '{{.SSH_CONFIG_FILES_DIR | default ".ssh/config.d/"}}'
+      SSH_KNOWN_HOSTS_FILES_DIR: '{{.SSH_KNOWN_HOSTS_FILES_DIR | default ".ssh/known_hosts.d/"}}'
+      GIT_IGNORE_FILE: $(git rev-parse --show-toplevel)/.gitignore
+    cmds:
+      # This will not validate any output, just dump something and maybe empty json document. Validation is left for the Python script.
+      - terraform output -json > {{.TF_OUTPUT_FILENAME}}
+      - defer: "{{.CLEAN_UP}} && rm -v {{.TF_OUTPUT_FILENAME}}"
+      - python ${SSH_HOST_CONNECTION_CONFIGURATION_WRITE_FILES_SCRIPT} -i {{.TF_OUTPUT_FILENAME}} -c {{.SSH_CONFIG_FILES_DIR}} -k {{.SSH_KNOWN_HOSTS_FILES_DIR}}
+      # Always add default path to project .gitignore so default path is always ignored if not already.
+      - if ! crudini --get {{.GIT_IGNORE_FILE}} "" "**/.ssh/config.d/*";then echo -e '\n\n# SSH configuration files for project hosts - default path\n**/.ssh/config.d/*' >> {{.GIT_IGNORE_FILE}}; fi;
+      - if ! crudini --get {{.GIT_IGNORE_FILE}} "" "**/.ssh/known_hosts.d/*";then echo -e '\n\n# SSH known hosts files for project hosts - default path\n**/.ssh/known_hosts.d/*' >> {{.GIT_IGNORE_FILE}}; fi;
+    # '{{.OUTPUTDIR}}'
     dir: '{{.USER_WORKING_DIR}}'

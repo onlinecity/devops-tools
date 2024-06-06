@@ -12,7 +12,7 @@
     "tflint@0.50.3",
     "cowsay@3.7.0",
     // go-task, is taskfile https://taskfile.dev/
-    "go-task@3.35.1",
+    "go-task@3.37.2",
     "terraform-docs@0.17.0",
     // for merging ini, ssh and lines, see https://github.com/pixelb/crudini
     // added to merge ansible.cfg files
@@ -35,7 +35,9 @@
     // > A common directory location for a virtual environment is .venv. This name keeps the directory typically hidden in your shell
     // > and thus out of the way while giving it a name that explains why the directory exists.
     // It also prevents clashing with .env environment variable definition files that some tooling supports.
-    "VENV_DIR": ".venv"
+    "VENV_DIR": ".venv",
+    // Put path in env devbox makes, as .Virtenv path not available and we need to call the script from taskfile
+    "SSH_HOST_CONNECTION_CONFIGURATION_WRITE_FILES_SCRIPT": "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py"
   },
   // Remember to declare all files in this section, if you want to process them shell or scripts below.
   "create_files": {
@@ -48,7 +50,11 @@
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
     "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
-    "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist"
+    "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist",
+    // Distribute the ssh connection configuration files script and templates to the virtual environment so they can be used from a taskfile
+    "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py": "config/ssh_host_connection_configuration_write_files.py",
+    "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2",
+    "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2"
   },
   "shell": {
     "init_hook": [
