@@ -52,6 +52,8 @@ tasks:
         - current directory is in a terraform project
         - terraform project have outputs, according to our internal devops docs about automated ssh connection configuration for hosts
 
+      Notice required Python packages are bootstrapped with task file support in the devbox plugin.
+
       Arguments:
         - CLEAN_UP={{.CLEAN_UP}}
 
