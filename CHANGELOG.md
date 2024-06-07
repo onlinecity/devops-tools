@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/onlinecity/devops-tools/compare/v1.4.0...v1.5.0) (2024-06-07)
+
+
+### Features
+
+* make minor release ([7f482ff](https://github.com/onlinecity/devops-tools/commit/7f482ff7ba4e6da4b6f861ed505963dce3bb42fe))
+
 ## [1.4.0](https://github.com/onlinecity/devops-tools/compare/v1.3.0...v1.4.0) (2024-06-06)
 
 
