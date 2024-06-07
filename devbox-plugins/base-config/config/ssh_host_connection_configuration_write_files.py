@@ -13,7 +13,10 @@
 # This script is supposed to be distributed and used through our devops-tools project with devbox plugins and taskfiles.
 #
 # There is - yet - no coordination and verification of compatibility with this script and the output from Terraform the script depends on.
-
+#
+# Design notes:
+# - Using Jinja2 templating, as it is well known and already used as part of Ansible work.
+# - Haven't implemented json schema validation, as the script will fail if the input data is not as expected. Instead we will later focus on the contract between the Terraform output and this script, and test earlier in the modules instead.
 
 import argparse # reading the command line parameters
 import json # reading the input file

@@ -1,0 +1,5 @@
+# Use for writing ssh host connection configuration files
+# from script ssh_host_connection_configuration_write_files.py
+# executed by taskfile task: ssh-write-config-files
+# available through our devops tooling and devbox plugins.
+jinja2

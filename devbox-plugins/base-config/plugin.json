@@ -20,8 +20,8 @@
     "yq-go@4.44.1"
   ],
   "env": {
-    // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment 
-    // variable TASK_X_REMOTE_TASKFILES. More information about remote taskfiles and experiments can be found here: 
+    // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment
+    // variable TASK_X_REMOTE_TASKFILES. More information about remote taskfiles and experiments can be found here:
     // https://taskfile.dev/experiments/remote-taskfiles/.
     // Status of the experiment can be found in depth here: https://github.com/orgs/go-task/projects/1?pane=issue&itemId=37121354
     // While the feature is an experiment we expect it to be included at some point that is seems like a necessary feature.
@@ -54,7 +54,8 @@
     // Distribute the ssh connection configuration files script and templates to the virtual environment so they can be used from a taskfile
     "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py": "config/ssh_host_connection_configuration_write_files.py",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2",
-    "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2"
+    "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2",
+    "{{ .Virtenv }}/provision-requirements.txt": "config/provision-requirements.txt"
   },
   "shell": {
     "init_hook": [
@@ -90,7 +91,14 @@
         // try to make adding to .gitignore idempotent
         // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".task/" and returns true if found
         "if crudini --get .gitignore \"\" \".task/\";then true; else echo -e '\n\n# Ignore file taskfile tool like remote tasks files etc.\n.task/' >> .gitignore; fi",
-        "echo 'Bootstrapping done'"
+
+        // Also add requirements for the common tasks, so they are ready when we initialize our tooling
+        // Needed for task ssh-write-config-files
+        "if ! [ -f requirements.txt ]; then touch requirements.txt; fi",
+        "if ! crudini --get requirements.txt \"\" \"-r provision/requirements.txt\";then echo -e '\n\n# Add required Python packages for provision and taskfile\n-r provision/requirements.txt' >> requirements.txt; fi",
+        "cp {{ .Virtenv }}/provision-requirements.txt provision/requirements.txt",
+
+        "echo 'Bootstrapping done'",
       ],
       "bootstrap-release-please": [
         "echo 'Bootstrapping release-please'",
