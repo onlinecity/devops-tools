@@ -63,9 +63,10 @@
       // 'activate' works for bash and zsh
       "if [ -f requirements.txt ];then . $VENV_DIR/bin/activate;fi",
 
+      // .venv seems to always be present when installing python, so ignore it even if venv is not activated
       // try to make adding to .gitignore idempotent
       // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".venv" and returns true if found
-      "if [ -f requirements.txt ]; then if crudini --get .gitignore \"\" \".venv\";then true; else echo -e '\n\n# Python virtual environment for tooling and Ansible\n.venv' >> .gitignore; fi; fi",
+      "if crudini --get .gitignore \"\" \".venv\";then true; else echo -e '\n\n# Python virtual environment for tooling and Ansible\n.venv' >> .gitignore; fi",
 
       // install repository requirements, which might point to other requirements files
       "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
