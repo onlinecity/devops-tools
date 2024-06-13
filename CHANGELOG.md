@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/onlinecity/devops-tools/compare/v1.5.0...v1.5.1) (2024-06-10)
+
+
+### Bug Fixes
+
+* Git ignore .venv always ([#15](https://github.com/onlinecity/devops-tools/issues/15)) ([3689216](https://github.com/onlinecity/devops-tools/commit/36892162b51a51791653b7a0e29841bd38c5bd1b))
+
 ## [1.5.0](https://github.com/onlinecity/devops-tools/compare/v1.4.0...v1.5.0) (2024-06-07)
 
 
