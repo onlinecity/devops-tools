@@ -1,0 +1,5 @@
+ansible-core==2.15
+# For the Hetzner Cloud dynamic inventory plugin:
+# https://docs.ansible.com/ansible/latest/collections/hetzner/hcloud/hcloud_inventory.html#ansible-collections-hetzner-hcloud-hcloud-inventory-requirements
+# Error msg snippet if not installed:[WARNING]:  * Failed to parse ... inventories/stg/hcloud.yml with auto plugin: The Hetzner Cloud dynamic inventory plugin requires requests.
+hcloud>=1.0.0

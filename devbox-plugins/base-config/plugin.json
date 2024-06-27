@@ -4,7 +4,7 @@
   "version": "1.4.0",
   "description": "Base devbox config for OC DevOps projects",
   "packages":[
-    "python@3.10",
+    "python@3.11",
     // tenv are both for getting the correct version of terraform/tofu
     "tenv@1.11.2",
     "pre-commit@3.6.2",
@@ -51,6 +51,7 @@
     "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
     "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist",
+    "{{ .Virtenv }}/ansible-requirements.txt.dist": "config/ansible-requirements.txt.dist",
     // Distribute the ssh connection configuration files script and templates to the virtual environment so they can be used from a taskfile
     "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py": "config/ssh_host_connection_configuration_write_files.py",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2",
@@ -126,6 +127,12 @@
         // simple verification of syntax errors, it will not catch sections or keys not know to ansible
         "ansible-config dump --only-changed -c configure/ansible.cfg --format yaml > /dev/null || echo 'Error in ansible.cfg, please check the file.'",
         "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
+      ],
+      "ansible-requirements": [
+        "echo 'Set up requirements.txt for ansible and installs the requirements needed for the project.'",
+        "if ! [ -f configure/requirements.txt ];then echo 'Creating default configure/requirements.txt file if not exists.'; fi",
+        "if ! [ -f configure/requirements.txt ];then cp -v {{ .Virtenv }}/ansible-requirements.txt.dist configure/requirements.txt; fi",
+        "echo 'Here should go some tool to merge the requirements.txt files, but we do not have that yet.'"
       ],
       "bootstrap-terraform-docs": [
         "echo 'Add terraform-docs pre-commit hooks'",
