@@ -130,7 +130,8 @@
       ],
       "ansible-requirements": [
         "touch configure/requirements.txt.local",
-        " rm -f requirements-merged.txt",
+        "pip install merge_requirements",
+        "rm -f requirements-merged.txt",
         "merge_requirements {{ .Virtenv }}/ansible-requirements.txt.dist configure/requirements.txt.local",
         "mv requirements-merged.txt configure/requirements.txt",
         "touch devbox.json"
