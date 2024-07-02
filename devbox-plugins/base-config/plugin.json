@@ -129,10 +129,11 @@
         "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
       ],
       "ansible-requirements": [
-        "echo 'Set up requirements.txt for ansible and installs the requirements needed for the project.'",
-        "if ! [ -f configure/requirements.txt ];then echo 'Creating default configure/requirements.txt file if not exists.'; fi",
-        "if ! [ -f configure/requirements.txt ];then cp -v {{ .Virtenv }}/ansible-requirements.txt.dist configure/requirements.txt; fi",
-        "echo 'Here should go some tool to merge the requirements.txt files, but we do not have that yet.'"
+        "touch configure/requirements.txt.local",
+        " rm -f requirements-merged.txt",
+        "merge_requirements {{ .Virtenv }}/ansible-requirements.txt.dist configure/requirements.txt.local",
+        "mv requirements-merged.txt configure/requirements.txt",
+        "touch devbox.json"
       ],
       "bootstrap-terraform-docs": [
         "echo 'Add terraform-docs pre-commit hooks'",
