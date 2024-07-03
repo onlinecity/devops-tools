@@ -56,7 +56,9 @@
     "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py": "config/ssh_host_connection_configuration_write_files.py",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2",
-    "{{ .Virtenv }}/provision-requirements.txt": "config/provision-requirements.txt"
+    "{{ .Virtenv }}/provision-requirements.txt": "config/provision-requirements.txt",
+    "{{ .Virtenv }}/ansible-requirements-helper.sh": "config/ansible-requirements-helper.sh",
+    "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt"
   },
   "shell": {
     "init_hook": [
@@ -70,7 +72,7 @@
       "if crudini --get .gitignore \"\" \".venv\";then true; else echo -e '\n\n# Python virtual environment for tooling and Ansible\n.venv' >> .gitignore; fi",
 
       // install repository requirements, which might point to other requirements files
-      "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
+      "if [ -f requirements.txt ];then pip install -r requirements.txt -r {{ .Virtenv }}/devbox-requirements.txt;fi",
 
       "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
     ],
@@ -129,12 +131,7 @@
         "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
       ],
       "ansible-requirements": [
-        "touch configure/requirements.txt.local",
-        "pip install merge_requirements",
-        "rm -f requirements-merged.txt",
-        "merge_requirements {{ .Virtenv }}/ansible-requirements.txt.dist configure/requirements.txt.local",
-        "mv requirements-merged.txt configure/requirements.txt",
-        "touch devbox.json"
+        "bash {{ .Virtenv }}/ansible-requirements-helper.sh"
       ],
       "bootstrap-terraform-docs": [
         "echo 'Add terraform-docs pre-commit hooks'",
