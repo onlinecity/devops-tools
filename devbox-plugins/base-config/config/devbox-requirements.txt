@@ -1,2 +1,1 @@
 merge_requirements
-# pyreq-merger
