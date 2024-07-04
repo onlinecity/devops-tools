@@ -32,7 +32,7 @@ This plugin has the baseline of tools needed for a DevOps project.
 
 This includes:
 
-* Python, including a virtual environment if `requirements.txt` is present in the root of the repository
+* Python, and activation of a virtual environment if `requirements.txt` is present in the root of the repository using this plugin
 * Pre-commit and linting hooks
 * tenv, tflint and terraform-docs for working with terraform or tofu
 * Taskfile
@@ -41,21 +41,25 @@ Assumptions:
 
 * You use either Bash or Zsh as your shell.
 
-#### Python and pip
+#### Python and virtual environments
 
 The plugin creates a python virtual environment, activates it and installs pip requirements if `requirements.txt` exists in the root of the project. If your requirements file is located elsewhere, you can create a "root" requirements.txt with a link to your other requirements file.
 
 Example `requirement.txt`:
 
+```requirements.txt
+-r customlocation/requirements.txt
 ```
--r configure/requirements.txt
-```
+
+Taskfile tasks, or devbox scripts might add to the base `requirements.txt` in the projects to ensure other requirements files are loaded, like the `bootstrap-taskfile` or `bootstrap-ansible` that add the line `-r configure/requirements.txt` into `requirements.txt`.
+
+Any Python package requirements needed for the devbox plugin itself, are managed in [`config/devbox-requirements.txt`](config/devbox-requirements.txt) and additionally installed during devbox init hooks, separately from the project requirements that might come from other sources or other devbox commands that manage those.
 
 ##### Requirements in repositories vs. defaults from devbox
 
-There has been created a devbox task, that merges an eventual `configure/requirements.txt.local` with a `requirements.txt.dist` from this devbox repository. This means that we can give some default python requirements from here, and not need to handle requirements in the platofmr repository. Updates for the requirements can be done easy from here.
+There has been created a devbox task, that merges an eventual `configure/requirements.txt.local` with a `requirements.txt.dist` from this devbox repository. This means that we can give some default python requirements from here, and not need to handle requirements in the infrastructure repositories. Updates for the requirements can be done easily from here.
 
-Update the `configure/requirements.txt` by running `devbox run ansible-requirements` from the root of the platform repository. This `configure/requirements.txt` must then be included in `requirements.txt` as [described above](#python-and-pip).
+Update the `configure/requirements.txt` by running `devbox run ansible-requirements` from the root of the platform repository. This `configure/requirements.txt` must then be included in `requirements.txt` as [described above](#python-and-virtual-environments).
 
 #### Terraform
 

@@ -62,10 +62,9 @@
   },
   "shell": {
     "init_hook": [
-      // create virtual environment if requirements.txt exists
+      // always create virtual environment to get devbox requirements installed
       // 'activate' works for bash and zsh
-      "if [ -f requirements.txt ];then . $VENV_DIR/bin/activate;fi",
-
+      ". $VENV_DIR/bin/activate",
       // Install tools, that devbox needs.
       "pip install -r {{ .Virtenv }}/devbox-requirements.txt",
 
@@ -122,6 +121,16 @@
       "bootstrap-ansible": [
         "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
         "mkdir -p configure/",
+
+        // Also add requirements needed to work with Ansible and install python packages
+        // First of if we use Ansible, we need a project requirements.txt file is not already there
+        "if ! [ -f requirements.txt ]; then touch requirements.txt; fi",
+        // Then we need to point it to the requirements file used in Ansible from the configure directory
+        "if ! crudini --get requirements.txt \"\" \"-r configure/requirements.txt\";then echo -e '\n\n# Add required Python packages for Ansible use\n-r configure/requirements.txt' >> requirements.txt; fi",
+
+        // Reuse another devbox run script to ensure we have a default Ansible requirements.txt file, merged with possible local ones
+        "devbox run ansible-requirements",
+
         "if ! [ -f configure/ansible.cfg ];then echo 'Creating empty ansible.cfg file if not exists.'; fi",
         "if ! [ -f configure/ansible.cfg ];then cp -v {{ .Virtenv }}/ansible.cfg configure/ansible.cfg; fi",
         "echo 'Merging ansible.cfg.dist into ansible.cfg.'",
