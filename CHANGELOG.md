@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/onlinecity/devops-tools/compare/v1.5.1...v1.6.0) (2024-07-04)
+
+
+### Features
+
+* Add devbox task, and default requirements.txt file ([#19](https://github.com/onlinecity/devops-tools/issues/19)) ([d675265](https://github.com/onlinecity/devops-tools/commit/d6752651227113f92592be2374dbe825446d9687))
+
 ## [1.5.1](https://github.com/onlinecity/devops-tools/compare/v1.5.0...v1.5.1) (2024-06-10)
 
 
