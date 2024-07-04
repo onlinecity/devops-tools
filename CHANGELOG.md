@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.1](https://github.com/onlinecity/devops-tools/compare/v1.6.0...v1.6.1) (2024-07-04)
+
+
+### Bug Fixes
+
+* Add about Python req. and fix ansible-bootstrap ([#22](https://github.com/onlinecity/devops-tools/issues/22)) ([cceed1f](https://github.com/onlinecity/devops-tools/commit/cceed1fbd9d467e5a2a1ec20cf973829e6575b9b))
+* Explicitly install devbox python requirements in init-hook ([5c5dd06](https://github.com/onlinecity/devops-tools/commit/5c5dd06578547389ba9c2792787f2f5617e80a3d))
+* Fix wording in ansible.cfg.dist regarding collections_path ([2905f22](https://github.com/onlinecity/devops-tools/commit/2905f226fdba6fc51a834a00bb3ead6f49860635))
+
 ## [1.6.0](https://github.com/onlinecity/devops-tools/compare/v1.5.1...v1.6.0) (2024-07-04)
 
 
