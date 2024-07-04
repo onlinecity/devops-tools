@@ -51,11 +51,14 @@
     "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
     "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist",
+    "{{ .Virtenv }}/ansible-requirements.txt.dist": "config/ansible-requirements.txt.dist",
     // Distribute the ssh connection configuration files script and templates to the virtual environment so they can be used from a taskfile
     "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py": "config/ssh_host_connection_configuration_write_files.py",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2",
-    "{{ .Virtenv }}/provision-requirements.txt": "config/provision-requirements.txt"
+    "{{ .Virtenv }}/provision-requirements.txt": "config/provision-requirements.txt",
+    "{{ .Virtenv }}/ansible-requirements-helper.sh": "config/ansible-requirements-helper.sh",
+    "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt"
   },
   "shell": {
     "init_hook": [
@@ -69,7 +72,7 @@
       "if crudini --get .gitignore \"\" \".venv\";then true; else echo -e '\n\n# Python virtual environment for tooling and Ansible\n.venv' >> .gitignore; fi",
 
       // install repository requirements, which might point to other requirements files
-      "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
+      "if [ -f requirements.txt ];then pip install -r requirements.txt -r {{ .Virtenv }}/devbox-requirements.txt;fi",
 
       "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
     ],
@@ -126,6 +129,9 @@
         // simple verification of syntax errors, it will not catch sections or keys not know to ansible
         "ansible-config dump --only-changed -c configure/ansible.cfg --format yaml > /dev/null || echo 'Error in ansible.cfg, please check the file.'",
         "echo 'Created our standard Ansible configuration file from a standard configuration and your local. Please commit and push the merged result.'"
+      ],
+      "ansible-requirements": [
+        "bash {{ .Virtenv }}/ansible-requirements-helper.sh"
       ],
       "bootstrap-terraform-docs": [
         "echo 'Add terraform-docs pre-commit hooks'",
