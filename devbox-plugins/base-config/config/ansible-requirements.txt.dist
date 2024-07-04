@@ -1,3 +1,8 @@
+# This files comes from our devops tools base-config plugin, and the authoritative source of our standard packages needed
+# for working with Ansible.
+# The files is supposed to contain our common selection of packages
+# and are used also to keep projects aligned by running specific devbox run command to distribute and possible merge with local
+# requirements files
 ansible-core==2.17.1
 # For the Hetzner Cloud dynamic inventory plugin:
 # https://docs.ansible.com/ansible/latest/collections/hetzner/hcloud/hcloud_inventory.html#ansible-collections-hetzner-hcloud-hcloud-inventory-requirements
