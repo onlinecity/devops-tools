@@ -51,6 +51,12 @@ Example `requirement.txt`:
 -r configure/requirements.txt
 ```
 
+##### Requirements in repositories vs. defaults from devbox
+
+There has been created a devbox task, that merges an eventual `configure/requirements.txt.local` with a `requirements.txt.dist` from this devbox repository. This means that we can give some default python requirements from here, and not need to handle requirements in the platofmr repository. Updates for the requirements can be done easy from here.
+
+Update the `configure/requirements.txt` by running `devbox run ansible-requirements` from the root of the platform repository. This `configure/requirements.txt` must then be included in `requirements.txt` as [described above](#python-and-pip).
+
 #### Terraform
 
 The plugin does not install terraform but instead installs tfswitch to help with getting the correct terraform version. We require our terraform project to define the terraform version with `required_version` and then use tfswitch to install it.
