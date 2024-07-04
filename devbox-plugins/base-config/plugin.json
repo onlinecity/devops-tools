@@ -62,10 +62,9 @@
   },
   "shell": {
     "init_hook": [
-      // create virtual environment if requirements.txt exists
+      // always create virtual environment to get devbox requirements installed
       // 'activate' works for bash and zsh
-      "if [ -f requirements.txt ];then . $VENV_DIR/bin/activate;fi",
-
+      ". $VENV_DIR/bin/activate",
       // Install tools, that devbox needs.
       "pip install -r {{ .Virtenv }}/devbox-requirements.txt",
 
