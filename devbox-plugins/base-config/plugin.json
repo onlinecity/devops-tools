@@ -76,7 +76,20 @@
       // install repository requirements, which might point to other requirements files
       "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
 
-      "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi"
+      // install pre-commit if a pre-commit config file exists
+      "if [ -f .pre-commit-config.yaml ];then pre-commit install;fi",
+
+      // since it is not possible to create aliases on direnv load (https://www.jetify.com/devbox/docs/ide_configuration/direnv/#direnv-limitations)
+      // we instead create a dir and put in the PATH, placed first so we can overwrite commands
+      // in this dir we can put executable scripts so it functions as aliases
+      "rm -rf .aliases",
+      "mkdir -p .aliases",
+      "export PATH=\"$PWD/.aliases\":$PATH",
+      "if crudini --get .gitignore \"\" \".aliases\";then true; else echo -e '\n\n# Aliases dir with script for devbox\n.aliases' >> .gitignore; fi",
+
+      // Create an alias script for terraform/tofu that is not used in this project, only runs if it can find a terraform lock file
+      // Note using both terraform and tofu in a project is not supported
+      "LOCKFILE=`find ./provision -type f -name '.terraform.lock.hcl' | head -n1`;if [ ! -z $LOCKFILE ];then if `head -n1 $LOCKFILE | grep -q \"tofu init\"`;then echo 'echo \"this project uses tofu\"' > .aliases/terraform; chmod +x .aliases/terraform;else echo 'echo \"this project uses terraform\"' > .aliases/tofu; chmod +x .aliases/tofu;fi;fi"
     ],
     "scripts": {
       "bootstrap-envrc-private": [
