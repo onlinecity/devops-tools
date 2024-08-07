@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/onlinecity/devops-tools/compare/v1.6.1...v1.7.0) (2024-08-07)
+
+
+### Features
+
+* Adding "aliases" support including terraform/tofu check ([#23](https://github.com/onlinecity/devops-tools/issues/23)) ([49e13d1](https://github.com/onlinecity/devops-tools/commit/49e13d12b08319a342bb1f8406ee368dd9618dc5))
+
 ## [1.6.1](https://github.com/onlinecity/devops-tools/compare/v1.6.0...v1.6.1) (2024-07-04)
 
 
