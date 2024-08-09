@@ -5,3 +5,10 @@
 # Those two tools was however the only ones we could find covering our most important use-cases about upgrading packages with locked versions, found in two requirements files.
 # See our Python virtual environment in devops docs https://docs.devops.oc.dk/hww/python-virtual-environments/
 merge_requirements==0.6
+
+
+# Use for writing ssh host connection configuration files
+# from script ssh_host_connection_configuration_write_files.py
+# executed by taskfile task: ssh-write-config-files
+# available through our devops tooling and devbox plugins.
+jinja2
