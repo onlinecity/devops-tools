@@ -47,6 +47,7 @@
     "{{ .Virtenv }}/pre-commit-config-tfdocs.yaml": "config/pre-commit-config-tfdocs.yaml",
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
+    "{{ .Virtenv }}/.editorconfig": "config/.editorconfig",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
     "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
@@ -103,6 +104,11 @@
         "cp {{ .Virtenv }}/pre-commit-config.yaml .pre-commit-config.yaml",
         "cp {{ .Virtenv }}/.yamllint .yamllint",
         "echo 'Bootstrapping done'"
+      ],
+      "bootstrap-editorconfig": [
+        "echo 'Bootstrapping editorconfig'",
+        "cp {{ .Virtenv }}/.editorconfig .editorconfig",
+        "echo 'Bootstrapping editorconfig done'"
       ],
       "bootstrap-taskfile": [
         "echo 'Bootstrapping taskfile'",
