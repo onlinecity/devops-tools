@@ -61,9 +61,13 @@ There has been created a devbox task, that merges an eventual `configure/require
 
 Update the `configure/requirements.txt` by running `devbox run ansible-requirements` from the root of the platform repository. This `configure/requirements.txt` must then be included in `requirements.txt` as [described above](#python-and-virtual-environments).
 
-#### Terraform
+#### Terraform and opentofu
 
-The plugin does not install terraform but instead installs tfswitch to help with getting the correct terraform version. We require our terraform project to define the terraform version with `required_version` and then use tfswitch to install it.
+The plugin does not install neither terraform, nor opentofu but uses `tenv` which handles installation of both based on `required_version` in the project.
+
+The devbox plugin initialization, ensures through aliases you can't call the wrong tool, as it makes a dummy alias based based on the terraform/opentofu lock file.
+
+Using 'tenv' you need to install either, the selection of the correct one, isn't handled by the devbox plugin yet.
 
 #### Scripts
 
