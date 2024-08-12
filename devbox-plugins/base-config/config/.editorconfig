@@ -1,0 +1,53 @@
+# This files was added by a devbox script from our devops tools project and is maintained there:
+# https://github.com/onlinecity/devops-tools
+#
+# The specific editorconfig file is inherited "through generations" of devops teams in OnlineCity,
+# so when added as part of devops-tools we don't know they origin of the file, nor the reasons of
+# choices in it.
+# However it is a good fit with current code base, so we keep it as is for now.
+# Bue Petersen added it here, who received the file as addded from Tjalfe Møller who used it together with Adam Tulenius and others - all earlier devops team members.
+
+# Don't scan for other configs, this is considered our topmost file in the hierarchy
+# as we add it to each project.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+[*.py]
+indent_size = 4
+
+[*.rs]
+indent_size = 4
+
+[*.go]
+indent_size = 8
+indent_style = tab
+
+[*.cr]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
+[*.{yaml,yml}]
+indent_size = 2
+
+[*.charset]
+insert_final_newline = false
+
+[*.css]
+indent_size = 2
+
+[*.html]
+indent_size = 2
+
+[*.txt]
+indent_size = 2
+
+[Makefile]
+indent_style = tab
