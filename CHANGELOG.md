@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0](https://github.com/onlinecity/devops-tools/compare/v1.6.1...v2.0.0) (2024-08-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Migration command available to clean up old Python dependencies applied by version 1x of our devbox base plugin.
+
+### Features
+
+* Add bootstrap support editorconfig ([#25](https://github.com/onlinecity/devops-tools/issues/25)) ([881d9be](https://github.com/onlinecity/devops-tools/commit/881d9be11b2563b97ba462c372df3e84ffe1e041))
+* Adding "aliases" support including terraform/tofu check ([#23](https://github.com/onlinecity/devops-tools/issues/23)) ([49e13d1](https://github.com/onlinecity/devops-tools/commit/49e13d12b08319a342bb1f8406ee368dd9618dc5))
+* Move devbox/taskfile requirements scope ([#26](https://github.com/onlinecity/devops-tools/issues/26)) ([64eb249](https://github.com/onlinecity/devops-tools/commit/64eb2498051d395dedbd36a1315d61c8a436fe31))
+
 ## [1.6.1](https://github.com/onlinecity/devops-tools/compare/v1.6.0...v1.6.1) (2024-07-04)
 
 
