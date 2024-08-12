@@ -57,9 +57,9 @@
     "{{ .Virtenv }}/ssh_host_connection_configuration_write_files.py": "config/ssh_host_connection_configuration_write_files.py",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.conf.j2",
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2",
-    "{{ .Virtenv }}/provision-requirements.txt": "config/provision-requirements.txt",
     "{{ .Virtenv }}/ansible-requirements-helper.sh": "config/ansible-requirements-helper.sh",
-    "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt"
+    "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt",
+    "{{ .Virtenv }}/migrate-1x-to-2x-helper.sh": "config/migrate-1x-to-2x-helper.sh"
   },
   "shell": {
     "init_hook": [
@@ -117,11 +117,7 @@
         // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".task/" and returns true if found
         "if crudini --get .gitignore \"\" \".task/\";then true; else echo -e '\n\n# Ignore file taskfile tool like remote tasks files etc.\n.task/' >> .gitignore; fi",
 
-        // Also add requirements for the common tasks, so they are ready when we initialize our tooling
-        // Needed for task ssh-write-config-files
-        "if ! [ -f requirements.txt ]; then touch requirements.txt; fi",
-        "if ! crudini --get requirements.txt \"\" \"-r provision/requirements.txt\";then echo -e '\n\n# Add required Python packages for provision and taskfile\n-r provision/requirements.txt' >> requirements.txt; fi",
-        "cp {{ .Virtenv }}/provision-requirements.txt provision/requirements.txt",
+        // Python package requirements for any common task, are part of the devbox-requirements.txt file, which are installed in the init_hook
 
         "echo 'Bootstrapping done'",
       ],
@@ -169,6 +165,9 @@
         "yq -n 'load(\".pre-commit-config.yaml\") *+ load(\"{{ .Virtenv }}/pre-commit-config-tfdocs.yaml\")' > .pre-commit-config.yaml.tmp",
         "mv .pre-commit-config.yaml.tmp .pre-commit-config.yaml",
         "echo 'Done'"
+      ],
+      "migrate-1x-to-2x": [
+        "bash {{ .Virtenv }}/migrate-1x-to-2x-helper.sh"
       ]
     }
   },
