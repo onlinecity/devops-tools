@@ -1,0 +1,26 @@
+# This files was added by a devbox script from our devops tools project and is maintained there:
+# https://github.com/onlinecity/devops-tools
+# The file is added by bootstrap-editorconfig and bootstrap-pre-commit scripts
+# and supports conditionally both features.
+---
+name: CI
+
+on:
+  push:
+
+jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.11.0
+        with:
+          enable-cache: "true"
+
+      - name: ensure pre-commit verifications
+        # we're not in an initialized devbox shell so need to run commands with devbox run --
+        # Notice also with -a to pre-commit we run all files, not only changed ones as this is a CI check
+        run: if [ -f .pre-commit-config.yaml ]; then devbox run -- pre-commit run -a; fi

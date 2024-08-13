@@ -17,7 +17,13 @@
     // for merging ini, ssh and lines, see https://github.com/pixelb/crudini
     // added to merge ansible.cfg files
     "crudini@0.9.5",
-    "yq-go@4.44.1"
+    "yq-go@4.44.1",
+    // Use with ci or cmd line to check files honor .editorconfig
+    // Multiple checkers are available, but the chosen one below seems to be the only mature and maintained one
+    // from this FAQ list: https://github.com/editorconfig/editorconfig/wiki/FAQ#are-there-any-tools-to-check-orand-reformat-existing-files-against-editorconfig-rules
+    // https://github.com/editorconfig-checker/editorconfig-checker
+    // Megalinter supports editorconfig, but couldn't find Nix package for megalinter: https://github.com/editorconfig-checker/editorconfig-checker?tab=readme-ov-file#mega-linter
+    "editorconfig-checker@3.0.3"
   ],
   "env": {
     // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment
@@ -48,6 +54,7 @@
     "{{ .Virtenv }}/.yamllint": "config/.yamllint",
     "{{ .Virtenv }}/taskfile.yml": "config/taskfile.yml",
     "{{ .Virtenv }}/.editorconfig": "config/.editorconfig",
+    "{{ .Virtenv }}/ci-lint.yml": "config/ci-lint.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
     "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
@@ -105,10 +112,11 @@
         "cp {{ .Virtenv }}/.yamllint .yamllint",
         "echo 'Bootstrapping done'"
       ],
-      "bootstrap-editorconfig": [
-        "echo 'Bootstrapping editorconfig'",
-        "cp {{ .Virtenv }}/.editorconfig .editorconfig",
-        "echo 'Bootstrapping editorconfig done'"
+      "bootstrap-ci-lint": [
+        "echo 'Bootstrapping CI lint actions'",
+        "mkdir -p .github/workflows",
+        "cp {{ .Virtenv }}/ci-lint.yml .github/workflows/ci-lint.yml",
+        "echo 'Bootstrapping CI lint actions done'"
       ],
       "bootstrap-taskfile": [
         "echo 'Bootstrapping taskfile'",
