@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/onlinecity/devops-tools/compare/v2.0.0...v2.1.0) (2024-08-13)
+
+
+### Features
+
+* Include editorconfig in pre-commit and support CI ([#28](https://github.com/onlinecity/devops-tools/issues/28)) ([584229a](https://github.com/onlinecity/devops-tools/commit/584229aa84d133a48cca7860263711c0864b836b))
+
 ## [2.0.0](https://github.com/onlinecity/devops-tools/compare/v1.6.1...v2.0.0) (2024-08-12)
 
 
