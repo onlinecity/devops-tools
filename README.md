@@ -30,14 +30,14 @@ Example:
 
 ### Base config
 
-This plugin has the baseline of tools needed for a DevOps project.
+This plugin has the baseline of tools needed for various DevOps projects.
 
 This includes:
 
 * Python, and activation of a virtual environment if `requirements.txt` is present in the root of the repository using this plugin
-* Pre-commit and linting hooks
+* Pre-commit and linting hooks, and CI Github actions for it.
 * tenv, tflint and terraform-docs for working with terraform or tofu
-* Taskfile
+* Taskfile or reusable tasks
 
 Assumptions:
 
@@ -77,7 +77,8 @@ The base config plugin includes some scripts to help bootstrap a new project.
 
 Available scripts:
   * __bootstrap-envrc-private__ - this command will setup direnv for using a private .envrc file
-  * __bootstrap-pre-commit__ - this command will create a basic pre-commit config with yamllint and tflint
+  * __bootstrap-pre-commit__ - this command will create a pre-commit config with lint and editorconfig
+  * __bootstrap-ci-lint__ - this command will add Github actions for linting with the same tools as pre-commit but on all files (not just changed ones). editorconfig-checker accepts a config file `.ecrc` but it doesn't have to exist.
   * __bootstrap-taskfile__ - this command will create a taskfile including common taskfile from the repo
   * __bootstrap-release-please__ - this command will create a release-please github action file using the __simple__ release type
   * __bootstrap-ansible__ - this command will create a basic ansible.cfg file and the `configure` folder
