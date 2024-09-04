@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/onlinecity/devops-tools/compare/v2.1.0...v2.1.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* improve alias script for terraform/tofu ([#30](https://github.com/onlinecity/devops-tools/issues/30)) ([88628ef](https://github.com/onlinecity/devops-tools/commit/88628ef927549686e0f1752c08c5265ece3f9d4d))
+
 ## [2.1.0](https://github.com/onlinecity/devops-tools/compare/v2.0.0...v2.1.0) (2024-08-13)
 
 
