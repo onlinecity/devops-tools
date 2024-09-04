@@ -66,7 +66,8 @@
     "{{ .Virtenv }}/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2": "config/ssh_host_connection_configuration_templates/ssh_host_connection_config.knownhost.j2",
     "{{ .Virtenv }}/ansible-requirements-helper.sh": "config/ansible-requirements-helper.sh",
     "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt",
-    "{{ .Virtenv }}/migrate-1x-to-2x-helper.sh": "config/migrate-1x-to-2x-helper.sh"
+    "{{ .Virtenv }}/migrate-1x-to-2x-helper.sh": "config/migrate-1x-to-2x-helper.sh",
+    "{{ .Virtenv }}/alias-terraform-tofu-init.sh": "config/alias-terraform-tofu-init.sh"
   },
   "shell": {
     "init_hook": [
@@ -94,10 +95,8 @@
       "mkdir -p .aliases",
       "export PATH=\"$PWD/.aliases\":$PATH",
       "if crudini --get .gitignore \"\" \".aliases\";then true; else echo -e '\n\n# Aliases dir with script for devbox\n.aliases' >> .gitignore; fi",
-
-      // Create an alias script for terraform/tofu that is not used in this project, only runs if it can find a terraform lock file
-      // Note using both terraform and tofu in a project is not supported
-      "LOCKFILE=`find ./provision -type f -name '.terraform.lock.hcl' | head -n1`;if [ ! -z $LOCKFILE ];then if `head -n1 $LOCKFILE | grep -q \"tofu init\"`;then echo 'echo \"this project uses tofu\"' > .aliases/terraform; chmod +x .aliases/terraform;else echo 'echo \"this project uses terraform\"' > .aliases/tofu; chmod +x .aliases/tofu;fi;fi"
+      // run the different alias scripts:
+      "bash {{ .Virtenv }}/alias-terraform-tofu-init.sh"
     ],
     "scripts": {
       "bootstrap-envrc-private": [
