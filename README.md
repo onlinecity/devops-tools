@@ -76,13 +76,14 @@ Using 'tenv' you need to install either, the selection of the correct one, isn't
 The base config plugin includes some scripts to help bootstrap a new project.
 
 Available scripts:
-  * __bootstrap-envrc-private__ - this command will setup direnv for using a private .envrc file
-  * __bootstrap-pre-commit__ - this command will create a pre-commit config with lint and editorconfig
-  * __bootstrap-ci-lint__ - this command will add Github actions for linting with the same tools as pre-commit but on all files (not just changed ones). editorconfig-checker accepts a config file `.ecrc` but it doesn't have to exist.
-  * __bootstrap-taskfile__ - this command will create a taskfile including common taskfile from the repo
-  * __bootstrap-release-please__ - this command will create a release-please github action file using the __simple__ release type
-  * __bootstrap-ansible__ - this command will create a basic ansible.cfg file and the `configure` folder
-  * __migration-*__ - migration scripts for moving from one version of this project to another, see [Migration notes](#migration-notes) for details
+
+* `bootstrap-envrc-private` - this command will setup direnv for using a private `.envrc` file
+* `bootstrap-pre-commit` - this command will create a pre-commit config with lint and editorconfig
+* `bootstrap-ci-lint` - this command will add Github actions for linting with the same tools as pre-commit but on all files (not just changed ones). editorconfig-checker accepts a config file `.ecrc` but it doesn't have to exist.
+* `bootstrap-taskfile` - this command will create a taskfile including common taskfile from the repo
+* `bootstrap-release-please` - this command will create a release-please github action file using the _simple_ release type
+* `bootstrap-ansible` - this command will create a basic ansible.cfg file and the `configure` folder
+* `migration-*` - migration scripts for moving from one version of this project to another, see [Migration notes](#migration-notes) for details
 
 ## Taskfiles
 
