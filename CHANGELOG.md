@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/onlinecity/devops-tools/compare/v2.1.1...v2.1.2) (2024-09-25)
+
+
+### Bug Fixes
+
+* Ensure .editorconfig is added for pre-commit ([#33](https://github.com/onlinecity/devops-tools/issues/33)) ([ce07512](https://github.com/onlinecity/devops-tools/commit/ce0751250b38c35a646b2becb367183e704d2a6a))
+
 ## [2.1.1](https://github.com/onlinecity/devops-tools/compare/v2.1.0...v2.1.1) (2024-09-04)
 
 
