@@ -109,6 +109,7 @@
         "echo 'Bootstrapping pre-commit'",
         "cp {{ .Virtenv }}/pre-commit-config.yaml .pre-commit-config.yaml",
         "cp {{ .Virtenv }}/.yamllint .yamllint",
+        "cp {{ .Virtenv }}/.editorconfig .editorconfig",
         "echo 'Bootstrapping done'"
       ],
       "bootstrap-ci-lint": [
