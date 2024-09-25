@@ -1,6 +1,6 @@
 # This files was added by a devbox script from our devops tools project and is maintained there:
 # https://github.com/onlinecity/devops-tools
-# The file is added by bootstrap-editorconfig and bootstrap-pre-commit scripts
+# The file is added by bootstrap-ci-lint devbox script
 # and supports conditionally both features.
 ---
 name: CI
