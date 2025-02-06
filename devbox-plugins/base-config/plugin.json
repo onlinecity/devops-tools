@@ -23,7 +23,8 @@
     // from this FAQ list: https://github.com/editorconfig/editorconfig/wiki/FAQ#are-there-any-tools-to-check-orand-reformat-existing-files-against-editorconfig-rules
     // https://github.com/editorconfig-checker/editorconfig-checker
     // Megalinter supports editorconfig, but couldn't find Nix package for megalinter: https://github.com/editorconfig-checker/editorconfig-checker?tab=readme-ov-file#mega-linter
-    "editorconfig-checker@3.0.3"
+    "editorconfig-checker@3.0.3",
+    "kubernetes-helm@3.17.0"
   ],
   "env": {
     // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment

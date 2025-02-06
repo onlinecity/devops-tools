@@ -17,3 +17,7 @@ repos:
         # editorconfig-checker accepts a config file `.ecrc` but it doesn't have to exist.
         entry: editorconfig-checker --config .ecrc
         language: system
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: 0225754079df7cc99525ead1decb5a8e92ecb158 # v0.1.25
+    hooks:
+      - id: helmlint
