@@ -82,8 +82,10 @@ for hosts in json_data["hosts"]["value"]:
         content = ssh_config_template.render(ssh_host_connection_configuration_data, template_file_name=template_file_name)
         with open(ssh_config_filename, mode='w', encoding='utf-8') as document:
             document.write(content)
+        os.chmod(ssh_config_filename, 0o644)
 
         template_file_name = template_dir + "/" + ssh_knownhost_template_file_name
         content = ssh_knownhost_template.render(ssh_host_connection_configuration_data, template_file_name=template_file_name)
         with open(ssh_knownhost_filename, mode='w', encoding='utf-8') as document:
             document.write(content)
+        os.chmod(ssh_knownhost_filename, 0o644)
