@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/onlinecity/devops-tools/compare/v2.1.2...v2.2.0) (2025-02-10)
+
+
+### Features
+
+* Adding helm and helm lint pre-commit hook ([#35](https://github.com/onlinecity/devops-tools/issues/35)) ([993d565](https://github.com/onlinecity/devops-tools/commit/993d565e65c503839843e3afa70da8ee81e36b49))
+
+
+### Bug Fixes
+
+* set proper permissions on ssh config files ([#36](https://github.com/onlinecity/devops-tools/issues/36)) ([db456f7](https://github.com/onlinecity/devops-tools/commit/db456f72be7576063189b3914ad0c8170b90950e))
+
 ## [2.1.2](https://github.com/onlinecity/devops-tools/compare/v2.1.1...v2.1.2) (2024-09-25)
 
 
