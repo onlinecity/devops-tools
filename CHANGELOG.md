@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/onlinecity/devops-tools/compare/v2.2.0...v3.0.0) (2025-02-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Use opentofu in ssh write config files ([#38](https://github.com/onlinecity/devops-tools/issues/38))
+
+### Features
+
+* Use opentofu in ssh write config files ([#38](https://github.com/onlinecity/devops-tools/issues/38)) ([19335e3](https://github.com/onlinecity/devops-tools/commit/19335e37e921d4db9d59aa2ce46f681e89cc98b0))
+
 ## [2.2.0](https://github.com/onlinecity/devops-tools/compare/v2.1.2...v2.2.0) (2025-02-10)
 
 
