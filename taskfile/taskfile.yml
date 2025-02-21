@@ -38,7 +38,7 @@ tasks:
   ssh-write-config-files:
     desc: Write SSH connection configuration files for project hosts
     summary: |
-      Get Terraform output and pass it to a Python script that writes ssh connection configuration- and
+      Get opentofu output and pass it to a Python script that writes ssh connection configuration- and
       known hosts files for all projects hosts.
 
       Opt-in to use the written configuration file in your local ssh client adding
@@ -76,8 +76,8 @@ tasks:
     # preflight checks giving the user with a helpful message
     preconditions:
       # terraform output doesn't fail if not in a terraform project, so we needed another fast executing terraform cmd that would:
-      - sh: terraform providers
-        msg: "Seems like you're not in a terraform project?"
+      - sh: tofu providers
+        msg: "Seems like you're not in a opentofu project?"
     vars:
       TF_OUTPUT_FILENAME: output-createdby-taskfile-task-{{.TASK}}.json
       CLEAN_UP: '{{.CLEAN_UP | default true}}'
@@ -87,7 +87,7 @@ tasks:
       GIT_IGNORE_FILE: $(git rev-parse --show-toplevel)/.gitignore
     cmds:
       # This will not validate any output, just dump something and maybe empty json document. Validation is left for the Python script.
-      - terraform output -json > {{.TF_OUTPUT_FILENAME}}
+      - tofu output -json > {{.TF_OUTPUT_FILENAME}}
       - defer: "{{.CLEAN_UP}} && rm -v {{.TF_OUTPUT_FILENAME}}"
       - python ${SSH_HOST_CONNECTION_CONFIGURATION_WRITE_FILES_SCRIPT} -i {{.TF_OUTPUT_FILENAME}} -c {{.SSH_CONFIG_FILES_DIR}} -k {{.SSH_KNOWN_HOSTS_FILES_DIR}}
       # Always add default path to project .gitignore so default path is always ignored if not already.
