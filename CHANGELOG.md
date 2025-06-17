@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/onlinecity/devops-tools/compare/v3.0.0...v3.0.1) (2025-06-17)
+
+
+### Bug Fixes
+
+* Release please ;-) ([5eedb0a](https://github.com/onlinecity/devops-tools/commit/5eedb0aa70696a8c71ffa84ebd0dcdcc3f67d35e))
+
 ## [3.0.0](https://github.com/onlinecity/devops-tools/compare/v2.2.0...v3.0.0) (2025-02-21)
 
 
