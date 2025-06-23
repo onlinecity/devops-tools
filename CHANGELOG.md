@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/onlinecity/devops-tools/compare/v3.0.1...v3.1.0) (2025-06-23)
+
+
+### Features
+
+* Setup ansible factcache ([#42](https://github.com/onlinecity/devops-tools/issues/42)) ([d77efcf](https://github.com/onlinecity/devops-tools/commit/d77efcf126091b8dd27435e370edaa3029b6e2ed))
+
 ## [3.0.1](https://github.com/onlinecity/devops-tools/compare/v3.0.0...v3.0.1) (2025-06-17)
 
 
