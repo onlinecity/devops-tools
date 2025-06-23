@@ -35,6 +35,9 @@ parser.add_argument('-c', '--config_dir', help='The output directory for the ssh
 parser.add_argument('-k', '--known_hosts_dir', help='The output directory for the known_hosts files for the hosts, pointed to from within the host configuration files.', required=False, metavar=".ssh/known_hosts.d/")
 args = parser.parse_args()
 
+# Path to ansible fact cache directory, where we store the ansible facts for the hosts.
+# They are hardcoded in https://github.com/onlinecity/devops-tools to be saved in /tmp/onlinecity_ansible_fact_cache/<vm_name>
+ansible_fact_cache_dir = "/tmp/onlinecity_ansible_fact_cache"
 
 # we distribute the templates with this script itself:
 template_dir = os.path.abspath(os.path.dirname(__file__) + "/ssh_host_connection_configuration_templates")
@@ -89,3 +92,8 @@ for hosts in json_data["hosts"]["value"]:
         with open(ssh_knownhost_filename, mode='w', encoding='utf-8') as document:
             document.write(content)
         os.chmod(ssh_knownhost_filename, 0o644)
+
+        # When writing new files for newly created hosts (or replaced, if tofu destro/apply), we also want to remove the cached ansible facts.
+        # They are hardcoded in https://github.com/onlinecity/devops-tools to be saved in /tmp/onlinecity_ansible_fact_cache/<vm_name>
+        if os.path.exists(ansible_fact_cache_dir + "/" + vm_name):
+            os.remove(ansible_fact_cache_dir + "/" + vm_name)
