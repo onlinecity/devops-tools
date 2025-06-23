@@ -19,6 +19,7 @@ collections_path = ./
 # Cache facts in a /tmp/onlinecity_ansible_fact_cache/<ansible_hostname> file for. After 28800 seconds, gather facts will run again automatically.
 # To remove cached facts, one can simply just delete the files in /tmp/onlinecity_ansible_fact_cache/<ansible_hostname>
 # or run "task devops-tools:ssh-write-config-files" in the right provision project folder.
+# The path to fact_caching_connection is also used in the task-script of `task devops-tools:ssh-write-config-files` which also clear the fact-cache for ansible.
 fact_caching = community.general.yaml
 fact_caching_connection = /tmp/onlinecity_ansible_fact_cache
 fact_caching_timeout = 28800
