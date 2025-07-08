@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.2](https://github.com/onlinecity/devops-tools/compare/v3.1.1...v3.1.2) (2025-07-08)
+
+
+### Bug Fixes
+
+* use go template escape in release please file ([#46](https://github.com/onlinecity/devops-tools/issues/46)) ([092f80f](https://github.com/onlinecity/devops-tools/commit/092f80fbce9c8ef3ebaa10e9374abca7889d35be))
+
 ## [3.1.1](https://github.com/onlinecity/devops-tools/compare/v3.1.0...v3.1.1) (2025-07-08)
 
 
