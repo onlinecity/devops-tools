@@ -6,6 +6,7 @@ on:
       - master
 
 permissions:
+  issues: write # important for label creation
   contents: write
   pull-requests: write
 
@@ -15,6 +16,7 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN  }}
           release-type: simple
