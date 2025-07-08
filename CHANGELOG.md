@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/onlinecity/devops-tools/compare/v3.1.0...v3.1.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* release please use new action path and config ([#44](https://github.com/onlinecity/devops-tools/issues/44)) ([9a14ce3](https://github.com/onlinecity/devops-tools/commit/9a14ce3ecb3e3e8910560085a60e62522bb227ff))
+
 ## [3.1.0](https://github.com/onlinecity/devops-tools/compare/v3.0.1...v3.1.0) (2025-06-23)
 
 
