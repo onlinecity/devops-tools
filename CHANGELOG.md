@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/onlinecity/devops-tools/compare/v3.1.2...v3.2.0) (2025-07-11)
+
+
+### Features
+
+* add glcoud auth Pip package for Ansible ([#48](https://github.com/onlinecity/devops-tools/issues/48)) ([2061ac3](https://github.com/onlinecity/devops-tools/commit/2061ac3cbaaef335929f6fff7959ff4de8e770ca))
+
 ## [3.1.2](https://github.com/onlinecity/devops-tools/compare/v3.1.1...v3.1.2) (2025-07-08)
 
 
