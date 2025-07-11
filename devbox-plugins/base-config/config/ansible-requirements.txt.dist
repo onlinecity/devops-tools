@@ -12,3 +12,6 @@ hcloud>=1.0.0
 # Added to be able to work with json_query filter in Ansible, initially for parsing json output in our verifications.
 # https://docs.ansible.com/ansible/latest/collections/community/general/docsite/filter_guide_selecting_json_data.html
 jmespath==1.0.1
+
+# For gcloud auth as Ansible operator to interfact with our Google Cloud services
+google-auth>=1.3.0
