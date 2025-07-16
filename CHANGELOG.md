@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/onlinecity/devops-tools/compare/v3.2.0...v3.3.0) (2025-07-16)
+
+
+### Features
+
+* ensure git submodules are not empty ([#50](https://github.com/onlinecity/devops-tools/issues/50)) ([d5c9381](https://github.com/onlinecity/devops-tools/commit/d5c9381f189544bb8c4d12dac02bc3184b496c33))
+
 ## [3.2.0](https://github.com/onlinecity/devops-tools/compare/v3.1.2...v3.2.0) (2025-07-11)
 
 
