@@ -97,7 +97,9 @@
       "export PATH=\"$PWD/.aliases\":$PATH",
       "if crudini --get .gitignore \"\" \".aliases\";then true; else echo -e '\n\n# Aliases dir with script for devbox\n.aliases' >> .gitignore; fi",
       // run the different alias scripts:
-      "bash {{ .Virtenv }}/alias-terraform-tofu-init.sh"
+      "bash {{ .Virtenv }}/alias-terraform-tofu-init.sh",
+      // ensure git submodules are initialized and updated so we don't have empty submodule dirs (exits clean if no submodules are present) - also merge any local commits to the update as they would else be detached
+      "git submodule update --init --recursive --merge"
     ],
     "scripts": {
       "bootstrap-envrc-private": [
