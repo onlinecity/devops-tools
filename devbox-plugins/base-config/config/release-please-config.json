@@ -1,0 +1,34 @@
+// This files was added by a devbox script from our devops tools project and is maintained there:
+// https://github.com/onlinecity/devops-tools
+{
+  "release-type": "simple",
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "🚀 Features",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": "🐀 Bug Fixes",
+      "hidden": false
+    },
+    {
+        "type": "chore",
+        "section": "🧰 Maintenance",
+        "hidden": false
+    },
+    {
+      "type": "docs",
+      "section": "📕 Documentation",
+      "hidden": false
+    }
+  ],
+  "packages": {
+    ".": {
+      "extra-files": [
+        // Add files here that should be updated with version
+      ]
+    }
+  }
+}
