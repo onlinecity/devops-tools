@@ -136,6 +136,8 @@
         "echo 'Bootstrapping release-please'",
         "mkdir -p .github/workflows",
         "cp {{ .Virtenv }}/release-please.yml .github/workflows/release-please.yml",
+        "cp {{ .Virtenv }}/release-please-manifest.json .release-please-manifest.json",
+        "cp {{ .Virtenv }}/release-please-config.json release-please-config.json",
         "echo 'Bootstrapping done'"
       ],
       "bootstrap-dependabot-gitsubmodules": [

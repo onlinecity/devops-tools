@@ -1,22 +1,16 @@
 # This files was added by a devbox script from our devops tools project and is maintained there:
 # https://github.com/onlinecity/devops-tools
+name: Release-please
+
 on:
   push:
     branches:
       - master
 
-permissions:
-  issues: write # important for label creation
-  contents: write
-  pull-requests: write
-
-name: release-please
-
 jobs:
   release-please:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: googleapis/release-please-action@v4
-        with:
-          token: {{"${{ secrets.GITHUB_TOKEN  }}"}}
-          release-type: simple
+    uses: onlinecity/github-actions-shared-workflows/.github/workflows/release-please.yml@v1.4.1
+    with:
+      app-id: ${{ vars.APP_OC_GITHUB_RELEASE_PLEASE_ID }}
+    secrets:
+      app-pem: ${{ secrets.APP_OC_GITHUB_RELEASE_PLEASE_PEM }}
