@@ -57,6 +57,8 @@
     "{{ .Virtenv }}/.editorconfig": "config/.editorconfig",
     "{{ .Virtenv }}/ci-lint.yml": "config/ci-lint.yml",
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
+    "{{ .Virtenv }}/release-please-config.json": "config/release-please-config.json",
+    "{{ .Virtenv }}/release-please-manifest.json": "config/release-please-manifest.json",
     "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
     "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist",
