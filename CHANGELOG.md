@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.4.0](https://github.com/onlinecity/devops-tools/compare/v3.3.0...v3.4.0) (2025-08-15)
+
+
+### Features
+
+* Add dnspython for community.general.dig lookup ([95c19d9](https://github.com/onlinecity/devops-tools/commit/95c19d96ba8f47295d887ed97ab9066ede377c96))
+* Add dnspython for community.general.dig lookup ([#54](https://github.com/onlinecity/devops-tools/issues/54)) ([39becb4](https://github.com/onlinecity/devops-tools/commit/39becb4d2233c629e200cf5e56155f4e3d7213f3))
+
+
+### Bug Fixes
+
+* Update release-please command to new workflow ([#52](https://github.com/onlinecity/devops-tools/issues/52)) ([6b5057d](https://github.com/onlinecity/devops-tools/commit/6b5057db8ddee9ffb9086237b2f7391522cb38e2))
+
 ## [3.3.0](https://github.com/onlinecity/devops-tools/compare/v3.2.0...v3.3.0) (2025-07-16)
 
 
