@@ -59,7 +59,6 @@
     "{{ .Virtenv }}/release-please.yml": "config/release-please.yml",
     "{{ .Virtenv }}/release-please-config.json": "config/release-please-config.json",
     "{{ .Virtenv }}/release-please-manifest.json": "config/release-please-manifest.json",
-    "{{ .Virtenv }}/dependabot-gitsubmodules.yml": "config/dependabot-gitsubmodules.yml",
     "{{ .Virtenv }}/ansible.cfg": "config/ansible.cfg",
     "{{ .Virtenv }}/ansible.cfg.dist": "config/ansible.cfg.dist",
     "{{ .Virtenv }}/ansible-requirements.txt.dist": "config/ansible-requirements.txt.dist",
@@ -141,12 +140,6 @@
         "cp {{ .Virtenv }}/release-please-manifest.json .release-please-manifest.json",
         "cp {{ .Virtenv }}/release-please-config.json release-please-config.json",
         "echo 'Bootstrapping done'"
-      ],
-      "bootstrap-dependabot-gitsubmodules": [
-        "echo 'Bootstrapping Github dependabot automation for Git submodules'",
-        "mkdir -p .github/workflows",
-        "cp {{ .Virtenv }}/dependabot-gitsubmodules.yml .github/dependabot-gitsubmodules.yml",
-        "echo 'Created dependabot Github workflow for Git submodules. Please commit and push to enable dependabot automation.'"
       ],
       "bootstrap-ansible": [
         "echo 'Configures a Ansible project and merges the standard configuration with your local configuration.'",
