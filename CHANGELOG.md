@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.1](https://github.com/onlinecity/devops-tools/compare/v3.4.0...v3.4.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* Remove comments from JSON files for release-please ([#57](https://github.com/onlinecity/devops-tools/issues/57)) ([43f5ff7](https://github.com/onlinecity/devops-tools/commit/43f5ff70893431366ec2734639ee5517f48da22d))
+* Remove dependabot bootstrap (moved to github-infrastruture) ([#55](https://github.com/onlinecity/devops-tools/issues/55)) ([c38fe96](https://github.com/onlinecity/devops-tools/commit/c38fe96c8e6791142e207244cfae5284c6ece8f2))
+
 ## [3.4.0](https://github.com/onlinecity/devops-tools/compare/v3.3.0...v3.4.0) (2025-08-15)
 
 
