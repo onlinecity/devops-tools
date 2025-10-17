@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.2](https://github.com/onlinecity/devops-tools/compare/v3.4.1...v3.4.2) (2025-10-17)
+
+
+### Bug Fixes
+
+* release-please.yml from templates not valid yaml ([#58](https://github.com/onlinecity/devops-tools/issues/58)) ([c29e560](https://github.com/onlinecity/devops-tools/commit/c29e5600c85ab4406c517e77e904494cf196849b))
+
 ## [3.4.1](https://github.com/onlinecity/devops-tools/compare/v3.4.0...v3.4.1) (2025-10-16)
 
 
