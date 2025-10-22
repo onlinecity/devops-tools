@@ -84,6 +84,7 @@ Available scripts:
 * `bootstrap-release-please` - this command will create a release-please github action file using the _simple_ release type
 * `bootstrap-ansible` - this command will create a basic ansible.cfg file and the `configure` folder
 * `migration-*` - migration scripts for moving from one version of this project to another, see [Migration notes](#migration-notes) for details
+* `init-submodules` - helper script for initiation of Git submodules based on an existing `.gitmodules` file
 
 ## Taskfiles
 
