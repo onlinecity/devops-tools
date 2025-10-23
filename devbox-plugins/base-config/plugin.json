@@ -69,7 +69,8 @@
     "{{ .Virtenv }}/ansible-requirements-helper.sh": "config/ansible-requirements-helper.sh",
     "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt",
     "{{ .Virtenv }}/migrate-1x-to-2x-helper.sh": "config/migrate-1x-to-2x-helper.sh",
-    "{{ .Virtenv }}/alias-terraform-tofu-init.sh": "config/alias-terraform-tofu-init.sh"
+    "{{ .Virtenv }}/alias-terraform-tofu-init.sh": "config/alias-terraform-tofu-init.sh",
+    "{{ .Virtenv }}/init-submodules.sh": "config/init-submodules.sh"
   },
   "shell": {
     "init_hook": [
@@ -176,6 +177,9 @@
       ],
       "migrate-1x-to-2x": [
         "bash {{ .Virtenv }}/migrate-1x-to-2x-helper.sh"
+      ],
+      "init-submodules": [
+        "bash {{ .Virtenv }}/init-submodules.sh"
       ]
     }
   },
