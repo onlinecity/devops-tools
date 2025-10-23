@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.0](https://github.com/onlinecity/devops-tools/compare/v3.4.2...v3.5.0) (2025-10-23)
+
+
+### Features
+
+* helper to initialise all submodules based on .gitmodules ([#60](https://github.com/onlinecity/devops-tools/issues/60)) ([22d8caf](https://github.com/onlinecity/devops-tools/commit/22d8caf21271e3fbb85ae64b45997b3a6171c740))
+
 ## [3.4.2](https://github.com/onlinecity/devops-tools/compare/v3.4.1...v3.4.2) (2025-10-17)
 
 
