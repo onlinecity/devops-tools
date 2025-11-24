@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.0](https://github.com/onlinecity/devops-tools/compare/v3.5.0...v3.6.0) (2025-11-24)
+
+
+### Features
+
+* ansible cfg dist file improvements ([#62](https://github.com/onlinecity/devops-tools/issues/62)) ([3ccfc60](https://github.com/onlinecity/devops-tools/commit/3ccfc60285d425d4a48b215d9b307df57da8e441))
+
 ## [3.5.0](https://github.com/onlinecity/devops-tools/compare/v3.4.2...v3.5.0) (2025-10-23)
 
 
