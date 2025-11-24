@@ -25,6 +25,14 @@ fact_caching_connection = /tmp/onlinecity_ansible_fact_cache
 fact_caching_timeout = 28800
 gathering = smart
 
+# Show decent verbose output, most of our team use
+verbosity = 2
+
+# Ensure handlers are always run though a playbook fails half-way.
+# This helps leaving the system in a healthier state in most cases.
+# Because some errors might be limited to specific services/logic, so others
+# services/logic unrelated can still be managed by handlers typically starting systemD units.
+force_handlers = True
 
 [diff]
 always = true
