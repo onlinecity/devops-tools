@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.1](https://github.com/onlinecity/devops-tools/compare/v3.6.0...v3.6.1) (2026-01-05)
+
+
+### Bug Fixes
+
+* update .editorconfig for excalidraw.json and gitmodules file types ([#64](https://github.com/onlinecity/devops-tools/issues/64)) ([4efce14](https://github.com/onlinecity/devops-tools/commit/4efce141924fec830045609160e64b5653290141))
+
 ## [3.6.0](https://github.com/onlinecity/devops-tools/compare/v3.5.0...v3.6.0) (2025-11-24)
 
 
