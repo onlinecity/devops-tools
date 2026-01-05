@@ -51,3 +51,10 @@ indent_size = 2
 
 [Makefile]
 indent_style = tab
+
+[*.excalidraw.json]
+insert_final_newline = false
+
+[*.gitmodules]
+indent_size = 2
+indent_style = tab
