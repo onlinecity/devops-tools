@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.2](https://github.com/onlinecity/devops-tools/compare/v3.6.1...v3.6.2) (2026-01-26)
+
+
+### Bug Fixes
+
+* Updated our ci-lint.yml file to have correct acces to private repos ([#66](https://github.com/onlinecity/devops-tools/issues/66)) ([699aa31](https://github.com/onlinecity/devops-tools/commit/699aa31b69f85677c5044554628f1f3f4fc1ac7b))
+
 ## [3.6.1](https://github.com/onlinecity/devops-tools/compare/v3.6.0...v3.6.1) (2026-01-05)
 
 
