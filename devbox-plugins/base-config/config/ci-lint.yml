@@ -17,13 +17,13 @@ jobs:
         id: generate-token
         uses: actions/create-github-app-token@v1
         with:
-          app-id: ${{ vars.APP_OC_GITHUB_ACTIONS_ID }}
-          private-key: ${{ secrets.APP_OC_GITHUB_ACTIONS_PEM }}
-          owner: ${{ github.repository_owner }}
+          app-id: {{ `${{ vars.APP_OC_GITHUB_ACTIONS_ID }}` }}
+          private-key: {{ `${{ secrets.APP_OC_GITHUB_ACTIONS_PEM }}` }}
+          owner: {{ `${{ github.repository_owner }}` }}
 
       - uses: actions/checkout@v4
         with:
-          token: ${{ steps.generate-token.outputs.token }}
+          token: {{ `${{ steps.generate-token.outputs.token }}` }}
           submodules: recursive
 
       - name: Install devbox
@@ -35,3 +35,4 @@ jobs:
         # we're not in an initialized devbox shell so need to run commands with devbox run --
         # Notice also with -a to pre-commit we run all files, not only changed ones as this is a CI check
         run: if [ -f .pre-commit-config.yaml ]; then devbox run -- pre-commit run -a; fi
+        
