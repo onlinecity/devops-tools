@@ -13,10 +13,21 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate a github token using an app so access is to other private repos within our org is available
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_OC_GITHUB_ACTIONS_ID }}
+          private-key: ${{ secrets.APP_OC_GITHUB_ACTIONS_PEM }}
+          owner: ${{ github.repository_owner }}
+
       - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          submodules: recursive
 
       - name: Install devbox
-        uses: jetify-com/devbox-install-action@v0.11.0
+        uses: jetify-com/devbox-install-action@v0.14.0
         with:
           enable-cache: "true"
 
