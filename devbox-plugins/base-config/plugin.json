@@ -121,7 +121,12 @@
         "echo 'Bootstrapping CI lint actions'",
         "mkdir -p .github/workflows",
         "cp {{ .Virtenv }}/ci-lint.yml .github/workflows/ci-lint.yml",
-        "echo 'Bootstrapping CI lint actions done'"
+        "echo 'Bootstrapping CI lint actions done'",
+        "echo 'IMPORTANT: This workflow requires GitHub App credentials:'",
+        "echo '  - Variable: APP_OC_GITHUB_ACTIONS_ID'",
+        "echo '  - Secret: APP_OC_GITHUB_ACTIONS_PEM'",
+        "echo 'These are automatically provisioned via Terraform in the github-infrastructure repository.'",
+        "echo 'If missing, ensure this repo is configured with add_app_oc_github_actions = true in Terraform.'"
       ],
       "bootstrap-taskfile": [
         "echo 'Bootstrapping taskfile'",

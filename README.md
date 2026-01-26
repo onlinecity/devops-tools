@@ -79,12 +79,30 @@ Available scripts:
 
 * `bootstrap-envrc-private` - this command will setup direnv for using a private `.envrc` file
 * `bootstrap-pre-commit` - this command will create a pre-commit config with lint and editorconfig
-* `bootstrap-ci-lint` - this command will add Github actions for linting with the same tools as pre-commit but on all files (not just changed ones). editorconfig-checker accepts a config file `.ecrc` but it doesn't have to exist.
+* `bootstrap-ci-lint` - this command will add Github actions for linting with the same tools as pre-commit but on all files (not just changed ones). editorconfig-checker accepts a config file `.ecrc` but it doesn't have to exist. **Note:** This workflow requires GitHub App credentials for private repo access, see [CI Lint Requirements](#ci-lint-requirements) below.
 * `bootstrap-taskfile` - this command will create a taskfile including common taskfile from the repo
 * `bootstrap-release-please` - this command will create a release-please github action file using the _simple_ release type
 * `bootstrap-ansible` - this command will create a basic ansible.cfg file and the `configure` folder
 * `migration-*` - migration scripts for moving from one version of this project to another, see [Migration notes](#migration-notes) for details
 * `init-submodules` - helper script for initiation of Git submodules based on an existing `.gitmodules` file
+
+#### CI Lint Requirements
+
+The `ci-lint.yml` workflow uses a GitHub App to authenticate, which provides access to other private repositories within the organization (needed for submodules and private devbox plugins).
+
+The following credentials are **automatically provisioned** via Terraform in the `github-infrastructure` repository:
+
+| Type | Name | Description |
+| --- | --- | --- |
+| Variable | `APP_OC_GITHUB_ACTIONS_ID` | The GitHub App ID |
+| Secret | `APP_OC_GITHUB_ACTIONS_PEM` | The GitHub App private key (PEM format) |
+
+**How it works:**
+- Repositories are configured in `github-infrastructure` Terraform with `add_app_oc_github_actions = true`
+- Terraform automatically provisions these credentials to the repository's Actions secrets/variables
+- The GitHub App itself is created once; credentials are then distributed to repos via Terraform
+
+If a repository is missing these credentials, it needs to be configured in the `github-infrastructure` repository's Terraform configuration.
 
 ## Taskfiles
 
