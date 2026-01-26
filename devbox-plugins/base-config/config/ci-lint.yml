@@ -6,7 +6,7 @@
 name: CI
 
 on:
-  push:
+  push: {}
 
 jobs:
 
@@ -35,4 +35,3 @@ jobs:
         # we're not in an initialized devbox shell so need to run commands with devbox run --
         # Notice also with -a to pre-commit we run all files, not only changed ones as this is a CI check
         run: if [ -f .pre-commit-config.yaml ]; then devbox run -- pre-commit run -a; fi
-        
