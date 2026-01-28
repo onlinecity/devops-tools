@@ -12,6 +12,6 @@ jobs:
   release-please:
     uses: onlinecity/github-actions-shared-workflows/.github/workflows/release-please.yml@v1.4.1
     with:
-      app-id: {{"${{ vars.APP_OC_GITHUB_RELEASE_PLEASE_ID }}"}}
+      app-id: ${{ vars.APP_OC_GITHUB_RELEASE_PLEASE_ID }}
     secrets:
-      app-pem: {{"${{ secrets.APP_OC_GITHUB_RELEASE_PLEASE_PEM }}"}}
+      app-pem: ${{ secrets.APP_OC_GITHUB_RELEASE_PLEASE_PEM }}
