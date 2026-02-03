@@ -27,13 +27,6 @@
     "kubernetes-helm@3.17.0"
   ],
   "env": {
-    // Python version exported for use in CI pipelines (e.g., GitHub Actions).
-    // This ensures the same Python version is used everywhere, avoiding compatibility issues
-    // with ansible-lint/ansible-core that occur when using 'python-version: 3.x' in workflows.
-    // Usage in GitHub Actions: devbox run -q -- printenv PYTHON_VERSION
-    // See: https://docs.devops.oc.dk/hww/ansible/ansible-testing/#devbox-too-slow-in-github-actions
-    "PYTHON_VERSION": "3.10",
-
     // Remote taskfiles are an experimental feature in Taskfile, so it is enabled by setting a feature flag as an environment
     // variable TASK_X_REMOTE_TASKFILES. More information about remote taskfiles and experiments can be found here:
     // https://taskfile.dev/experiments/remote-taskfiles/.
@@ -86,6 +79,7 @@
       ". $VENV_DIR/bin/activate",
       // Install tools, that devbox needs.
       "pip install -r {{ .Virtenv }}/devbox-requirements.txt",
+      "python3 -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")' > .python-version",
 
       // .venv seems to always be present when installing python, so ignore it even if venv is not activated
       // try to make adding to .gitignore idempotent
