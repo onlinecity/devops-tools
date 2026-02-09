@@ -79,7 +79,10 @@
       ". $VENV_DIR/bin/activate",
       // Install tools, that devbox needs.
       "pip install -r {{ .Virtenv }}/devbox-requirements.txt",
-
+      // resolve python version from devbox.lock package entries (keys look like "python@<version>")
+      // write the python version to .python-version, so dependent repositories can read the python version to use from there.
+      // this file should be committed so CI workflows can use it via python-version-file in actions/setup-python
+      "export PYTHON_VERSION=$(jq -er '.packages | to_entries[] | select(.key | startswith(\"python@\")) | .value.version' devbox.lock) && echo 'Writing .python-version (managed by devbox base-config plugin)' && echo \"$PYTHON_VERSION\" > .python-version",
       // .venv seems to always be present when installing python, so ignore it even if venv is not activated
       // try to make adding to .gitignore idempotent
       // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".venv" and returns true if found
