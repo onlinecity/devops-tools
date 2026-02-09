@@ -86,8 +86,6 @@
       // try to make adding to .gitignore idempotent
       // crudini tool tries to read from default section, as if was an ini file, and find the line starting with ".venv" and returns true if found
       "if crudini --get .gitignore \"\" \".venv\";then true; else echo -e '\n\n# Python virtual environment for tooling and Ansible\n.venv' >> .gitignore; fi",
-      // resolve nmap version from devbox.lock package entries (keys look like "nmap@<version>")
-      "export NMAP_VERSION=$(jq -r '.packages | to_entries[] | select(.key | startswith(\"nmap@\")) | .value.version' devbox.lock)",
 
       // install repository requirements, which might point to other requirements files
       "if [ -f requirements.txt ];then pip install -r requirements.txt;fi",
