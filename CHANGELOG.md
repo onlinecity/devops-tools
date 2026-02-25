@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.4](https://github.com/onlinecity/devops-tools/compare/v3.6.3...v3.6.4) (2026-02-25)
+
+
+### Bug Fixes
+
+* bump version ([3cee4cf](https://github.com/onlinecity/devops-tools/commit/3cee4cf17409e3ae0ac5faa9b642f21da2f1990b))
+
 ## [3.6.3](https://github.com/onlinecity/devops-tools/compare/v3.6.2...v3.6.3) (2026-02-09)
 
 
