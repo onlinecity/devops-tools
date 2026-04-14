@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/onlinecity/devops-tools/compare/v3.6.4...v4.0.0) (2026-04-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* In case you depended on automatic merge of Git Submodules in the devbox base-config plugin's init hook, this have now been disabled and only uninitialized Git submodules are initialized.
+
+### Bug Fixes
+
+* avoid git submodule init hook merges ([#75](https://github.com/onlinecity/devops-tools/issues/75)) ([aed451a](https://github.com/onlinecity/devops-tools/commit/aed451a862cf7c18fa900259e7f1591b32d81a38))
+
 ## [3.6.4](https://github.com/onlinecity/devops-tools/compare/v3.6.3...v3.6.4) (2026-02-25)
 
 
