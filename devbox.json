@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/main/schemas/devbox.schema.json",
+  "packages": [
+    // bats: Bash Automated Testing System, used to test the devbox plugin shell scripts
+    // https://github.com/bats-core/bats-core
+    "bats@1.12.0"
+  ],
+  "shell": {
+    "scripts": {
+      "test": "bats --print-output-on-failure devbox-plugins/base-config/tests/ensure-submodules-populated.bats"
+    }
+  }
+}

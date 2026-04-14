@@ -1,0 +1,6 @@
+[submodule "devbox-plugins/base-config/tests/libs/bats-support"]
+	path = devbox-plugins/base-config/tests/libs/bats-support
+	url = https://github.com/bats-core/bats-support
+[submodule "devbox-plugins/base-config/tests/libs/bats-assert"]
+	path = devbox-plugins/base-config/tests/libs/bats-assert
+	url = https://github.com/bats-core/bats-assert

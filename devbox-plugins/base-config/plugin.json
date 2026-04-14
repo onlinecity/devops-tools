@@ -70,7 +70,8 @@
     "{{ .Virtenv }}/devbox-requirements.txt": "config/devbox-requirements.txt",
     "{{ .Virtenv }}/migrate-1x-to-2x-helper.sh": "config/migrate-1x-to-2x-helper.sh",
     "{{ .Virtenv }}/alias-terraform-tofu-init.sh": "config/alias-terraform-tofu-init.sh",
-    "{{ .Virtenv }}/init-submodules.sh": "config/init-submodules.sh"
+    "{{ .Virtenv }}/init-submodules.sh": "config/init-submodules.sh",
+    "{{ .Virtenv }}/ensure-submodules-populated.sh": "config/ensure-submodules-populated.sh"
   },
   "shell": {
     "init_hook": [
@@ -103,8 +104,11 @@
       "if crudini --get .gitignore \"\" \".aliases\";then true; else echo -e '\n\n# Aliases dir with script for devbox\n.aliases' >> .gitignore; fi",
       // run the different alias scripts:
       "bash {{ .Virtenv }}/alias-terraform-tofu-init.sh",
-      // ensure git submodules are initialized and updated so we don't have empty submodule dirs (exits clean if no submodules are present) - also merge any local commits to the update as they would else be detached
-      "git submodule update --init --recursive --merge"
+      // Ensure all git submodules have content (are populated). Only uninitialized (empty) submodules are
+      // populated; submodules that already have content -- including ones with local commits or uncommitted
+      // changes -- are left completely untouched. This prevents silent failures where tools like Ansible
+      // silently operate on an empty submodule directory.
+      "bash {{ .Virtenv }}/ensure-submodules-populated.sh"
     ],
     "scripts": {
       "bootstrap-envrc-private": [

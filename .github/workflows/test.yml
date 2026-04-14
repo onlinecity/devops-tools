@@ -1,0 +1,31 @@
+# This workflow runs the BATS test suite on every pull request and every push to master.
+# Tests are co-located with the plugin they cover:
+#   devbox-plugins/base-config/tests/
+#
+# bats-support and bats-assert are registered as git submodules pinned to specific
+# tag SHAs and are populated here via actions/checkout submodules: recursive.
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+name: test
+
+jobs:
+  test-plugin-base-config:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Populates bats-support and bats-assert lib submodules
+          submodules: recursive
+
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.15.0
+
+      - name: Run base-config plugin tests
+        run: devbox run test
