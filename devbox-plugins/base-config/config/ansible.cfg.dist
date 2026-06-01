@@ -5,7 +5,7 @@
 # devbox plugin code: https://github.com/jetify-com/devbox/blob/0.10.7/internal/plugin/plugin.go#L126
 
 # Ensure we can add the '{{"{{"}} ansible_managed {{"}}"}}' Jinja variable to templated files, to give a hint of traceability on where files comes from on the hosts.
-ansible_managed = Ansible managed file. From {{"{{%"}} if role_name is defined {{"%}}"}}role: '{{"{{{{"}} role_name {{"}}}}"}}'{{"{{%"}} else {{"%}}"}}playbook described with 'name: {{"{{{{"}} ansible_play_name {{"}}}}"}}' {{"{{%"}} endif {{"%}}"}}. Template source file name: {{"{{{{"}} template_path | basename {{"}}}}"}}
+# Ansible 2.20 deprecates configuring the ansible_managed var via this file, ansible.cfg, and is therefore now either handled in the ansible.cfg in the configure folder of the consuming infrastructure repo or in the defaults/main.yml of the ansible-role itself
 
 
 # Installs roles into [current dir]/roles/namespace.rolename
