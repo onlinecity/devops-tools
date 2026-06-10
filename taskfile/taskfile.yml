@@ -15,8 +15,8 @@ tasks:
     desc: Run ansible galaxy install
     summary: |
       Run ansible-galaxy to install required packages
-      Expects a requirements.yaml in the root of the project
-    cmd: ansible-galaxy install -r requirements.yaml
+      Expects a requirements.yml in the root of the project
+    cmd: ansible-galaxy install -r requirements.yml
     dir: '{{.USER_WORKING_DIR}}'
 
   install-tofu:
