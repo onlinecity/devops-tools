@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/onlinecity/devops-tools/compare/v4.0.0...v4.0.1) (2026-07-03)
+
+
+### Bug Fixes
+
+* Fix typo in file extension ([#78](https://github.com/onlinecity/devops-tools/issues/78)) ([cd39b39](https://github.com/onlinecity/devops-tools/commit/cd39b392da35f91c3daa1f22a4c224ad3ec32a29))
+
 ## [4.0.0](https://github.com/onlinecity/devops-tools/compare/v3.6.4...v4.0.0) (2026-04-14)
 
 
