@@ -21,7 +21,7 @@ jobs:
           private-key: {{ `${{ secrets.APP_OC_GITHUB_ACTIONS_PEM }}` }}
           owner: {{ `${{ github.repository_owner }}` }}
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: {{ `${{ steps.generate-token.outputs.token }}` }}
           submodules: recursive
