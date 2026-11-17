@@ -157,3 +157,11 @@ See [CHANGELOG.md](CHANGELOG.md) for releases, migration and compatibility betwe
 Release process is described here: [https://docs.devops.oc.dk/hww/release-process/](https://docs.devops.oc.dk/hww/release-process/)
 
 _Sorry for the internal links in a public repository, but you basically just need to know it follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) and we use [release-please](https://github.com/googleapis/release-please) to automate the release process_.
+
+## Known issues
+
+### Old lockfile causing errors in github actions
+
+We have multiple times experienced errors in github actions after upgrading devbox.json from a very old version. The error we get is `WARNING: Python version must be > 3.3 to create a virtual environment.` while devbox is installing packages.
+
+The seems to be because the _nixpkgs-unstable_ github repository is not getting updated in the devbox lockfile. The simple solution to this is to delete the lockfile completely, this will force an upgrade of the nix packages and we can then commit the new lockfile which should fix the error.
